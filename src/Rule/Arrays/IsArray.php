@@ -10,20 +10,14 @@ use Validation\Rule\Rule;
  * @template K of array-key
  * @template V
  *
- * @implements Rule<mixed, array<K, V>>
+ * @extends Rule<mixed, array<K, V>>
  */
-class IsArray implements Rule
+class IsArray extends Rule
 {
 
     public const ERR_ANY_INVALID_VALUE = 0;
     public const ERR_BAD_KEY = 1;
     public const ERR_NOT_ARRAY = 2;
-
-    /**
-     * @var string[]
-     * @psalm-var array<int, string>
-     */
-    private array $messages;
 
     /**
      * @var Rule|null
@@ -52,24 +46,6 @@ class IsArray implements Rule
             self::ERR_NOT_ARRAY => 'This value must be an array.',
             self::ERR_BAD_KEY => 'This key is invalid.',
         ];
-    }
-
-    public function getMessages(): array
-    {
-        return $this->messages;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @psalm-suppress MoreSpecificImplementedParamType
-     * @psalm-param self::ERR_* $type
-     */
-    public function setMessage(int $type, string $newMessage): self
-    {
-        $this->messages[$type] = $newMessage;
-
-        return $this;
     }
 
     /**

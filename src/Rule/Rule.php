@@ -8,15 +8,24 @@ namespace Validation\Rule;
  * @template I
  * @template O
  */
-interface Rule
+abstract class Rule
 {
+
+    /**
+     * @var string[]
+     * @psalm-var array<int, string>
+     */
+    protected array $messages;
 
     /**
      * @return string[]
      *
      * @psalm-return array<int, string>
      */
-    public function getMessages(): array;
+    public function getMessages(): array
+    {
+        return $this->messages;
+    }
 
     /**
      * @param int $type
@@ -25,5 +34,10 @@ interface Rule
      * @return self
      * @psalm-return self<I, O>
      */
-    public function setMessage(int $type, string $newMessage): self;
+    public function setMessage(int $type, string $newMessage): self
+    {
+        $this->messages[$type] = $newMessage;
+
+        return $this;
+    }
 }

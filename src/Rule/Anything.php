@@ -5,14 +5,19 @@ declare(strict_types=1);
 namespace Validation\Rule;
 
 /**
- * @implements Rule<mixed, mixed>
+ * @extends Rule<mixed, mixed>
  */
-class Anything implements Rule
+class Anything extends Rule
 {
+
+    public function __construct()
+    {
+        $this->messages = [];
+    }
 
     public function getMessages(): array
     {
-        return [];
+        return $this->messages;
     }
 
     public function setMessage(int $type, string $newMessage): self

@@ -12,18 +12,12 @@ use Validation\Rule\Rule;
  * @psalm-template I
  * @psalm-template MyO
  *
- * @implements Rule<I, MyO>
+ * @extends Rule<I, MyO>
  */
-class Union implements Rule
+class Union extends Rule
 {
 
     public const ERR_MESSAGE = 0;
-
-    /**
-     * @var string[]
-     * @psalm-var array<int, string>
-     */
-    private array $messages;
 
     /**
      * @var array
@@ -62,24 +56,6 @@ class Union implements Rule
         $this->rules[] = $next;
 
         /** @psalm-var self<I, NewO> $this */
-
-        return $this;
-    }
-
-    public function getMessages(): array
-    {
-        return $this->messages;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @psalm-suppress MoreSpecificImplementedParamType
-     * @psalm-param self::ERR_* $type
-     */
-    public function setMessage(int $type, string $newMessage): self
-    {
-        $this->messages[$type] = $newMessage;
 
         return $this;
     }

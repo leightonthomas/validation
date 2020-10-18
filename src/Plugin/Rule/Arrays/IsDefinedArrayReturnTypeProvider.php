@@ -69,7 +69,7 @@ class IsDefinedArrayReturnTypeProvider implements MethodReturnTypeProviderInterf
             return null;
         }
 
-        if (! array_key_exists('validation\rule\rule', $secondArgClass->class_implements)) {
+        if (! array_key_exists('validation\rule\rule', $secondArgClass->parent_classes)) {
             return null;
         }
 

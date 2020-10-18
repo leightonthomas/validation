@@ -9,19 +9,13 @@ use Validation\Rule\Rule;
 /**
  * @psalm-template A of array
  *
- * @implements Rule<mixed, A>
+ * @extends Rule<mixed, A>
  */
-class IsDefinedArray implements Rule
+class IsDefinedArray extends Rule
 {
 
     public const ERR_KEY_MISSING = 0;
     public const ERR_NOT_ARRAY = 1;
-
-    /**
-     * @var string[]
-     * @psalm-var array<int, string>
-     */
-    private array $messages;
 
     /**
      * @var Rule[]
@@ -48,24 +42,6 @@ class IsDefinedArray implements Rule
         $instance->pairs[$key] = $value;
 
         return $instance;
-    }
-
-    public function getMessages(): array
-    {
-        return $this->messages;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @psalm-suppress MoreSpecificImplementedParamType
-     * @psalm-param self::ERR_* $type
-     */
-    public function setMessage(int $type, string $newMessage): self
-    {
-        $this->messages[$type] = $newMessage;
-
-        return $this;
     }
 
     /**

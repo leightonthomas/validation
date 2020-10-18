@@ -80,9 +80,14 @@ Feature: Compose Rule with no plugin
     Given I have the following code
       """
       /**
-       * @implements Rule<int, positive-int>
+       * @extends Rule<int, positive-int>
        */
-      class SomeOtherRule implements Rule {
+      class SomeOtherRule extends Rule {
+          public function __construct()
+          {
+              $this->messages = [];
+          }
+
           public function getMessages(): array
           {
               return [];

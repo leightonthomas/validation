@@ -10,18 +10,12 @@ use Validation\Rule\Rule;
  * @psalm-template I
  * @psalm-template MyO
  *
- * @implements Rule<I, MyO>
+ * @extends Rule<I, MyO>
  */
-class Compose implements Rule
+class Compose extends Rule
 {
 
     public const ERR_MESSAGE = 0;
-
-    /**
-     * @var string[]
-     * @psalm-var array<int, string>
-     */
-    private array $messages;
 
     /**
      * @var array
@@ -43,24 +37,6 @@ class Compose implements Rule
     public static function from(Rule $rule): self
     {
         return new self($rule);
-    }
-
-    public function getMessages(): array
-    {
-        return $this->messages;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @psalm-suppress MoreSpecificImplementedParamType
-     * @psalm-param self::ERR_* $type
-     */
-    public function setMessage(int $type, string $newMessage): self
-    {
-        $this->messages[$type] = $newMessage;
-
-        return $this;
     }
 
     /**

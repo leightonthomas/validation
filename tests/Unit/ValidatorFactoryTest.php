@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Tests\Validation\Unit;
 
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Validation\Checker\Checker;
 use Validation\Exception\NoCheckersRegistered;
 use Validation\Rule\Rule;
 use Validation\Rule\Scalar\Strings\IsString;
 use Validation\ValidationResult;
 use Validation\ValidatorFactory;
-use PHPUnit\Framework\TestCase;
 
 use function get_class;
 
@@ -42,7 +42,12 @@ class ValidatorFactoryTest extends TestCase
     {
         $inputData = 'abc123';
 
-        $rule = new class implements Rule {
+        $rule = new class extends Rule {
+
+            public function __construct()
+            {
+                $this->messages = [];
+            }
 
             public function getMessages(): array
             {

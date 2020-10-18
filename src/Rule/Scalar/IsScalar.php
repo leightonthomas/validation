@@ -11,9 +11,9 @@ use Validation\Rule\Rule;
  *
  * @psalm-type _ScalarIdentifier = self::SCALAR_*
  *
- * @implements Rule<mixed, T>
+ * @extends Rule<mixed, T>
  */
-abstract class IsScalar implements Rule
+abstract class IsScalar extends Rule
 {
 
     public const ERR_MESSAGE = 0;
@@ -22,12 +22,6 @@ abstract class IsScalar implements Rule
     public const SCALAR_INT = 'integer';
     public const SCALAR_BOOLEAN = 'boolean';
     public const SCALAR_FLOAT = 'double';
-
-    /**
-     * @var string[]
-     * @psalm-var array<int, string>
-     */
-    private array $messages;
 
     /**
      * @var string
@@ -45,24 +39,6 @@ abstract class IsScalar implements Rule
         $this->messages = [
             self::ERR_MESSAGE => "This value must be of type {{ expectedType }}.",
         ];
-    }
-
-    public function getMessages(): array
-    {
-        return $this->messages;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @psalm-suppress MoreSpecificImplementedParamType
-     * @psalm-param self::ERR_* $type
-     */
-    public function setMessage(int $type, string $newMessage): self
-    {
-        $this->messages[$type] = $newMessage;
-
-        return $this;
     }
 
     public function getType(): string
