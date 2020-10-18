@@ -18,8 +18,7 @@ class Anything implements Checker
         $value,
         Rule $rule,
         ValidationResult $result
-    ): void
-    {
+    ): void {
     }
 
     public function canCheck(): array

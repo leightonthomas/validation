@@ -31,8 +31,7 @@ class IsScalar implements Checker
         $value,
         Rule $rule,
         ValidationResult $result
-    ): void
-    {
+    ): void {
         $expected = $rule->getType();
         $type = gettype($value);
         if ($type === $expected) {

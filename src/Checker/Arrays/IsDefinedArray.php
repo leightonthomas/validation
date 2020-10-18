@@ -36,9 +36,8 @@ class IsDefinedArray implements Checker
         $value,
         Rule $rule,
         ValidationResult $result
-    ): void
-    {
-        if ( ! is_array($value)) {
+    ): void {
+        if (! is_array($value)) {
             $result->addError($rule->getMessages()[IsDefinedArrayRule::ERR_NOT_ARRAY]);
 
             return;
@@ -47,7 +46,7 @@ class IsDefinedArray implements Checker
         foreach ($rule->getPairs() as $expectedKey => $valueRule) {
             $result->addToPath((string) $expectedKey);
 
-            if ( ! array_key_exists($expectedKey, $value)) {
+            if (! array_key_exists($expectedKey, $value)) {
                 $result->addError($rule->getMessages()[IsDefinedArrayRule::ERR_KEY_MISSING]);
 
                 $result->removeLastPath();

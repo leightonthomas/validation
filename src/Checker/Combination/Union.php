@@ -33,8 +33,7 @@ class Union implements Checker
         $value,
         Rule $rule,
         ValidationResult $result
-    ): void
-    {
+    ): void {
         foreach ($rule->getRules() as $subRule) {
             if ($this->factory->create($subRule)->validate($value)->isValid()) {
                 return;

@@ -25,11 +25,15 @@
         "vimeo/psalm": "^3.16",
         "phpunit/phpunit": "^9.4",
         "psalm/plugin-phpunit": "^0.12.2",
-        "weirdan/codeception-psalm-module": "^0.9.1"
+        "weirdan/codeception-psalm-module": "^0.9.1",
+        "squizlabs/php_codesniffer": "^3.5"
     },
     "extra": {
         "psalm": {
             "pluginClass": "Validation\\Plugin\\Plugin"
         }
+    },
+    "scripts": {
+        "phpcs-fix": "vendor/bin/phpcbf --standard=PSR12 src/"
     }
 }

@@ -28,9 +28,8 @@ class Length implements Checker
         $value,
         Rule $rule,
         ValidationResult $result
-    ): void
-    {
-        if ( ! is_string($value)) {
+    ): void {
+        if (! is_string($value)) {
             $result->addError($rule->getMessages()[LengthRule::ERR_NOT_STRING]);
 
             return;

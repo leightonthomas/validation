@@ -33,8 +33,7 @@ class Compose implements Checker
         $value,
         Rule $rule,
         ValidationResult $result
-    ): void
-    {
+    ): void {
         foreach ($rule->getRules() as $subRule) {
             $subResult = $this->factory->create($subRule)->validate($value);
 

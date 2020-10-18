@@ -17,7 +17,6 @@ the `IsDefinedArray` rule.
 
 ## TODO
 
-* Add PSR-12 code sniffer thing to re-format things nicely and consistently
 * Do a pass over the checkers to make sure they still validate the correct type
     * For cases where someone is not using the static analysis features
 * Finish off basic rules

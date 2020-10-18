@@ -58,7 +58,7 @@ class IsDefinedArrayReturnTypeProvider implements MethodReturnTypeProviderInterf
 
         $secondArgType = $secondArgTypes[array_key_first($secondArgTypes)];
 
-        if ( ! $secondArgType instanceof Type\Atomic\TNamedObject) {
+        if (! $secondArgType instanceof Type\Atomic\TNamedObject) {
             return null;
         }
 
@@ -69,7 +69,7 @@ class IsDefinedArrayReturnTypeProvider implements MethodReturnTypeProviderInterf
             return null;
         }
 
-        if ( ! array_key_exists('validation\rule\rule', $secondArgClass->class_implements)) {
+        if (! array_key_exists('validation\rule\rule', $secondArgClass->class_implements)) {
             return null;
         }
 
@@ -86,8 +86,8 @@ class IsDefinedArrayReturnTypeProvider implements MethodReturnTypeProviderInterf
 
             /** @var int|null $realTypeParameterIndex */
             $realTypeParameterIndex = array_flip(
-                    array_keys($secondArgClass->template_types ?? [])
-                )[$oRuleOverrideType->param_name] ?? null;
+                array_keys($secondArgClass->template_types ?? [])
+            )[$oRuleOverrideType->param_name] ?? null;
 
             if ($realTypeParameterIndex === null) {
                 return null;
@@ -135,7 +135,7 @@ class IsDefinedArrayReturnTypeProvider implements MethodReturnTypeProviderInterf
         }
 
         $existingArray = $existingType->getAtomicTypes()['array'];
-        if ( ! ($existingArray instanceof Type\Atomic\ObjectLike)) {
+        if (! ($existingArray instanceof Type\Atomic\ObjectLike)) {
             return null;
         }
 

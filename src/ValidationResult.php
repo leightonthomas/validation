@@ -119,7 +119,7 @@ final class ValidationResult
 
             $root = &$errors;
             foreach ($path as $pathPart) {
-                if ( ! array_key_exists($pathPart, $root)) {
+                if (! array_key_exists($pathPart, $root)) {
                     $root[$pathPart] = [];
                 }
 

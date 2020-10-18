@@ -40,9 +40,8 @@ class IsArray implements Checker
         $value,
         Rule $rule,
         ValidationResult $result
-    ): void
-    {
-        if ( ! is_array($value)) {
+    ): void {
+        if (! is_array($value)) {
             $result->addError($rule->getMessages()[IsArrayRule::ERR_NOT_ARRAY]);
 
             return;
@@ -64,7 +63,7 @@ class IsArray implements Checker
             $result->addToPath((string) $key);
 
             $keyResult = $keyValidator->validate($key);
-            if ( ! $keyResult->isValid()) {
+            if (! $keyResult->isValid()) {
                 $result->addError(preg_replace('/{{\s+key\s+}}/', (string) $key, $badKeyMessage));
                 $result->removeLastPath();
 
@@ -72,7 +71,7 @@ class IsArray implements Checker
             }
 
             $valueResult = $valueValidator->validate($datum);
-            if ( ! $valueResult->isValid()) {
+            if (! $valueResult->isValid()) {
                 if ($anyBadValueMessage !== null) {
                     $result->addError($anyBadValueMessage);
                     $result->removeLastPath();
