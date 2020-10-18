@@ -1,0 +1,6 @@
+actor: PsalmTester
+modules:
+  enabled:
+    - Filesystem
+    - Cli
+    - \Weirdan\Codeception\Psalm\Module

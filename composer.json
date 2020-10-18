@@ -1,0 +1,35 @@
+{
+    "name": "leightonthomas/validation",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "leightonthomas",
+            "email": "leighton.thomas@vivait.co.uk"
+        }
+    ],
+    "autoload": {
+        "exclude-from-classmap": ["src/Plugin"],
+        "psr-4": {
+            "Validation\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": ["src/Plugin"],
+        "psr-4": {
+            "Tests\\Validation\\": "tests/"
+        }
+    },
+    "description": "Type safe validation library.",
+    "require-dev": {
+        "vimeo/psalm": "^3.16",
+        "phpunit/phpunit": "^9.4",
+        "psalm/plugin-phpunit": "^0.12.2",
+        "weirdan/codeception-psalm-module": "^0.9.1"
+    },
+    "extra": {
+        "psalm": {
+            "pluginClass": "Validation\\Plugin\\Plugin"
+        }
+    }
+}

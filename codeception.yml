@@ -1,0 +1,10 @@
+namespace: Tests\Validation\Integration
+paths:
+  tests: tests/Integration
+  output: tests/Integration/_output
+  data: tests/Integration/_data
+  support: tests/Integration
+actor_suffix: Tester
+extensions:
+  enabled:
+    - Codeception\Extension\RunFailed
