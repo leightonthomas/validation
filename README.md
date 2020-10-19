@@ -20,8 +20,6 @@ the `IsDefinedArray` rule.
 * Do a pass over the checkers to make sure they still validate the correct type
     * For cases where someone is not using the static analysis features
 * Finish off basic rules
-    * Add "IsNull" rule, `Rule<mixed, null>`
-    * Add "Constant" rule, `Rule<mixed, T>`
     * Multibyte string support
 * Set up Travis
 * Write some examples
