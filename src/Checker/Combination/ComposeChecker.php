@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Validation\Checker\Combination;
 
-use Validation\Rule\Combination\Compose as ComposeRule;
-use Validation\Rule\Rule;
 use Validation\Checker\Checker;
+use Validation\Rule\Combination\Compose;
+use Validation\Rule\Rule;
 use Validation\ValidationResult;
 use Validation\ValidatorFactory;
 
 /**
- * @implements Checker<ComposeRule>
+ * @implements Checker<Compose>
  */
-class Compose implements Checker
+class ComposeChecker implements Checker
 {
 
     private ValidatorFactory $factory;
@@ -26,8 +26,8 @@ class Compose implements Checker
     /**
      * {@inheritdoc}
      *
-     * @param ComposeRule $rule
-     * @psalm-param ComposeRule<mixed, mixed> $rule
+     * @param Compose $rule
+     * @psalm-param Compose<mixed, mixed> $rule
      */
     public function check(
         $value,
@@ -41,7 +41,7 @@ class Compose implements Checker
                 continue;
             }
 
-            $customMessage = $rule->getMessages()[ComposeRule::ERR_MESSAGE] ?? null;
+            $customMessage = $rule->getMessages()[Compose::ERR_MESSAGE] ?? null;
             if ($customMessage !== null) {
                 $result->addError($customMessage);
             } else {
@@ -55,7 +55,7 @@ class Compose implements Checker
     public function canCheck(): array
     {
         return [
-            ComposeRule::class,
+            Compose::class,
         ];
     }
 }

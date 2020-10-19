@@ -6,14 +6,14 @@ namespace Tests\Validation\Unit\Checker\Combination;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Combination\Compose;
-use Validation\Rule\Combination\Compose as ComposeRule;
+use Validation\Checker\Combination\ComposeChecker;
+use Validation\Rule\Combination\Compose;
 use Validation\ValidatorFactory;
 
-class ComposeTest extends TestCase
+class ComposeCheckerTest extends TestCase
 {
 
-    private Compose $checker;
+    private ComposeChecker $checker;
 
     public function setUp(): void
     {
@@ -24,7 +24,7 @@ class ComposeTest extends TestCase
             ->getMock()
         ;
 
-        $this->checker = new Compose($factory);
+        $this->checker = new ComposeChecker($factory);
     }
 
     /**
@@ -33,7 +33,7 @@ class ComposeTest extends TestCase
     public function itWillBeConfiguredForTheCorrectChecks(): void
     {
         self::assertEquals(
-            [ComposeRule::class],
+            [Compose::class],
             $this->checker->canCheck(),
         );
     }

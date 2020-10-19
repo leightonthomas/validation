@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Tests\Validation\Integration\Checker\Combination;
 
 use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Combination\Compose;
+use Validation\Checker\Combination\ComposeChecker;
 use Validation\Checker\Scalar\IsScalar;
 use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Combination\Compose as ComposeRule;
+use Validation\Rule\Combination\Compose;
 use Validation\Rule\Scalar\Integer\IsInteger;
 use Validation\Rule\Scalar\Strings\IsString;
 
-class ComposeTest extends CheckerTest
+class ComposeCheckerTest extends CheckerTest
 {
 
     public function setUp(): void
@@ -20,7 +20,7 @@ class ComposeTest extends CheckerTest
         parent::setUp();
 
         $this->factory->register(new IsScalar());
-        $this->factory->register(new Compose($this->factory));
+        $this->factory->register(new ComposeChecker($this->factory));
     }
 
     /**
@@ -30,7 +30,7 @@ class ComposeTest extends CheckerTest
      */
     public function itWillAddAnErrorIfDoesNotMatchWhenOnlyOneRule(): void
     {
-        $rule = ComposeRule::from(new IsString());
+        $rule = Compose::from(new IsString());
 
         $result = $this->factory->create($rule)->validate(4);
 
@@ -48,7 +48,7 @@ class ComposeTest extends CheckerTest
      */
     public function itWillAddAnErrorIfARuleDoesNotMatchWhenMultipleRules(): void
     {
-        $rule = ComposeRule::from(new IsString())
+        $rule = Compose::from(new IsString())
             ->and(new IsInteger())
         ;
 
@@ -68,7 +68,7 @@ class ComposeTest extends CheckerTest
      */
     public function itWillNotAddAnErrorIfMatchesWhenOnlyOneRule(): void
     {
-        $rule = ComposeRule::from(new IsString());
+        $rule = Compose::from(new IsString());
 
         $result = $this->factory->create($rule)->validate('hi');
 
@@ -83,7 +83,7 @@ class ComposeTest extends CheckerTest
      */
     public function itWillNotAddAnErrorIfARuleMatchesWhenMultipleRules(): void
     {
-        $rule = ComposeRule::from(new IsString())
+        $rule = Compose::from(new IsString())
             ->and(new IsString())
         ;
 
@@ -100,8 +100,8 @@ class ComposeTest extends CheckerTest
      */
     public function itWillAddACustomErrorMessageIfSet(): void
     {
-        $rule = ComposeRule::from(new IsString());
-        $rule->setMessage(ComposeRule::ERR_MESSAGE, 'my custom msg');
+        $rule = Compose::from(new IsString());
+        $rule->setMessage(Compose::ERR_MESSAGE, 'my custom msg');
 
         $result = $this->factory->create($rule)->validate(4);
 
