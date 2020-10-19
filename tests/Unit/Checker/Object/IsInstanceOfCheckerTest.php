@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Tests\Validation\Unit\Checker\Object;
 
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Object\IsInstanceOf;
-use Validation\Rule\Object\IsInstanceOf as IsInstanceOfRule;
+use Validation\Checker\Object\IsInstanceOfChecker;
+use Validation\Rule\Object\IsInstanceOf;
 
-class IsInstanceOfTest extends TestCase
+class IsInstanceOfCheckerTest extends TestCase
 {
 
-    private IsInstanceOf $checker;
+    private IsInstanceOfChecker $checker;
 
     public function setUp(): void
     {
-        $this->checker = new IsInstanceOf();
+        $this->checker = new IsInstanceOfChecker();
     }
 
     /**
@@ -25,7 +25,7 @@ class IsInstanceOfTest extends TestCase
     {
         self::assertEquals(
             [
-                IsInstanceOfRule::class,
+                IsInstanceOf::class,
             ],
             $this->checker->canCheck(),
         );

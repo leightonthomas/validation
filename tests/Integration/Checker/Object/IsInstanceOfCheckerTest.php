@@ -8,23 +8,23 @@ use stdClass;
 use Tests\Validation\DataProvider\TypeProvider;
 use Tests\Validation\Integration\Checker\CheckerTest;
 use Validation\Checker\Checker;
-use Validation\Checker\Object\IsInstanceOf;
+use Validation\Checker\Object\IsInstanceOfChecker;
 use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Object\IsInstanceOf as IsInstanceOfRule;
+use Validation\Rule\Object\IsInstanceOf;
 use Validation\Rule\Rule;
 use Validation\Rule\Scalar\Strings\IsString;
 use Validation\ValidatorFactory;
 
 use function is_object;
 
-class IsInstanceOfTest extends CheckerTest
+class IsInstanceOfCheckerTest extends CheckerTest
 {
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->factory->register(new IsInstanceOf());
+        $this->factory->register(new IsInstanceOfChecker());
     }
 
     /**
@@ -37,7 +37,7 @@ class IsInstanceOfTest extends CheckerTest
      */
     public function itWillAddAnErrorIfNotObject($value): void
     {
-        $rule = new IsInstanceOfRule(ValidatorFactory::class);
+        $rule = new IsInstanceOf(ValidatorFactory::class);
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -58,8 +58,8 @@ class IsInstanceOfTest extends CheckerTest
      */
     public function itWillAddACustomErrorMessageIfConfiguredIfNotObject($value): void
     {
-        $rule = new IsInstanceOfRule(ValidatorFactory::class);
-        $rule->setMessage(IsInstanceOfRule::ERR_NOT_OBJECT, 'my msg');
+        $rule = new IsInstanceOf(ValidatorFactory::class);
+        $rule->setMessage(IsInstanceOf::ERR_NOT_OBJECT, 'my msg');
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -88,7 +88,7 @@ class IsInstanceOfTest extends CheckerTest
      */
     public function itWillAddAnErrorIfNotInstance(): void
     {
-        $rule = new IsInstanceOfRule(ValidatorFactory::class);
+        $rule = new IsInstanceOf(ValidatorFactory::class);
 
         $result = $this->factory->create($rule)->validate(new stdClass());
 
@@ -106,8 +106,8 @@ class IsInstanceOfTest extends CheckerTest
      */
     public function itWillAddACustomErrorIfConfiguredIfNotInstance(): void
     {
-        $rule = new IsInstanceOfRule(ValidatorFactory::class);
-        $rule->setMessage(IsInstanceOfRule::ERR_NOT_INSTANCE, 'my msg');
+        $rule = new IsInstanceOf(ValidatorFactory::class);
+        $rule->setMessage(IsInstanceOf::ERR_NOT_INSTANCE, 'my msg');
 
         $result = $this->factory->create($rule)->validate(new stdClass());
 
@@ -131,7 +131,7 @@ class IsInstanceOfTest extends CheckerTest
      */
     public function itWillAddNoErrorIfInputIsInstance(string $fqcn, object $obj): void
     {
-        $rule = new IsInstanceOfRule($fqcn);
+        $rule = new IsInstanceOf($fqcn);
 
         $result = $this->factory->create($rule)->validate($obj);
 
@@ -144,7 +144,7 @@ class IsInstanceOfTest extends CheckerTest
         return [
             'same' => [ValidatorFactory::class, new ValidatorFactory()],
             'abstract' => [Rule::class, new IsString()],
-            'interface' => [Checker::class, new IsInstanceOf()],
+            'interface' => [Checker::class, new IsInstanceOfChecker()],
         ];
     }
 }

@@ -9,11 +9,11 @@ use Tests\Validation\Integration\Checker\CheckerTest;
 use Validation\Checker\Arrays\IsArrayChecker;
 use Validation\Checker\Checker;
 use Validation\Checker\Combination\IntersectionChecker;
-use Validation\Checker\Object\IsInstanceOf;
+use Validation\Checker\Object\IsInstanceOfChecker;
 use Validation\Checker\Scalar\IsScalar;
 use Validation\Exception\NoCheckersRegistered;
 use Validation\Rule\Combination\Intersection;
-use Validation\Rule\Object\IsInstanceOf as IsInstanceOfRule;
+use Validation\Rule\Object\IsInstanceOf;
 use Validation\Rule\Rule;
 use Validation\ValidatorFactory;
 
@@ -27,7 +27,7 @@ class IntersectionCheckerTest extends CheckerTest
         $this->factory->register(new IsScalar());
         $this->factory->register(new IsArrayChecker($this->factory));
         $this->factory->register(new IntersectionChecker($this->factory));
-        $this->factory->register(new IsInstanceOf());
+        $this->factory->register(new IsInstanceOfChecker());
     }
 
     /**
@@ -37,7 +37,7 @@ class IntersectionCheckerTest extends CheckerTest
      */
     public function itWillAddAnErrorIfARuleDoesNotMatchWhenOnlyOneRule(): void
     {
-        $rule = Intersection::of(new IsInstanceOfRule(ValidatorFactory::class));
+        $rule = Intersection::of(new IsInstanceOf(ValidatorFactory::class));
 
         $result = $this->factory->create($rule)->validate(new stdClass());
 
@@ -55,9 +55,9 @@ class IntersectionCheckerTest extends CheckerTest
      */
     public function itWillAddAnErrorForAllRulesThatDoNotMatchWhenMultipleRules(): void
     {
-        $rule = Intersection::of(new IsInstanceOfRule(stdClass::class))
-            ->and(new IsInstanceOfRule(Rule::class))
-            ->and(new IsInstanceOfRule(Checker::class))
+        $rule = Intersection::of(new IsInstanceOf(stdClass::class))
+            ->and(new IsInstanceOf(Rule::class))
+            ->and(new IsInstanceOf(Checker::class))
         ;
 
         $result = $this->factory->create($rule)->validate(new stdClass());
@@ -79,7 +79,7 @@ class IntersectionCheckerTest extends CheckerTest
      */
     public function itWillNotAddAnErrorIfAllRulesMatchWhenOnlyOneRule(): void
     {
-        $rule = Intersection::of(new IsInstanceOfRule(stdClass::class));
+        $rule = Intersection::of(new IsInstanceOf(stdClass::class));
 
         $result = $this->factory->create($rule)->validate(new stdClass());
 
@@ -94,9 +94,9 @@ class IntersectionCheckerTest extends CheckerTest
      */
     public function itWillNotAddAnErrorIfARuleMatchesWhenMultipleRules(): void
     {
-        $rule = Intersection::of(new IsInstanceOfRule(stdClass::class))
-            ->and(new IsInstanceOfRule(stdClass::class))
-            ->and(new IsInstanceOfRule(stdClass::class))
+        $rule = Intersection::of(new IsInstanceOf(stdClass::class))
+            ->and(new IsInstanceOf(stdClass::class))
+            ->and(new IsInstanceOf(stdClass::class))
         ;
 
         $result = $this->factory->create($rule)->validate(new stdClass());
@@ -112,9 +112,9 @@ class IntersectionCheckerTest extends CheckerTest
      */
     public function itWillAddACustomErrorMessageIfSet(): void
     {
-        $rule = Intersection::of(new IsInstanceOfRule(stdClass::class))
-            ->and(new IsInstanceOfRule(Rule::class))
-            ->and(new IsInstanceOfRule(Checker::class))
+        $rule = Intersection::of(new IsInstanceOf(stdClass::class))
+            ->and(new IsInstanceOf(Rule::class))
+            ->and(new IsInstanceOf(Checker::class))
         ;
         $rule->setMessage(Intersection::ERR_INVALID, 'my custom msg');
 
