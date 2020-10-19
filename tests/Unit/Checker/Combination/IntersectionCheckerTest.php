@@ -6,14 +6,14 @@ namespace Tests\Validation\Unit\Checker\Combination;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Combination\Intersection;
-use Validation\Rule\Combination\Intersection as IntersectionRule;
+use Validation\Checker\Combination\IntersectionChecker;
+use Validation\Rule\Combination\Intersection;
 use Validation\ValidatorFactory;
 
-class IntersectionTest extends TestCase
+class IntersectionCheckerTest extends TestCase
 {
 
-    private Intersection $checker;
+    private IntersectionChecker $checker;
 
     public function setUp(): void
     {
@@ -24,7 +24,7 @@ class IntersectionTest extends TestCase
             ->getMock()
         ;
 
-        $this->checker = new Intersection($factory);
+        $this->checker = new IntersectionChecker($factory);
     }
 
     /**
@@ -33,7 +33,7 @@ class IntersectionTest extends TestCase
     public function itWillBeConfiguredForTheCorrectChecks(): void
     {
         self::assertEquals(
-            [IntersectionRule::class],
+            [Intersection::class],
             $this->checker->canCheck(),
         );
     }
