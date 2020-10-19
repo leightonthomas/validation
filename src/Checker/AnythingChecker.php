@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Validation\Checker;
 
+use Validation\Rule\Anything;
 use Validation\Rule\Rule;
-use Validation\Rule\Anything as AnythingRule;
 use Validation\ValidationResult;
 
 /**
- * @implements Checker<AnythingRule>
+ * @implements Checker<Anything>
  */
-class Anything implements Checker
+class AnythingChecker implements Checker
 {
 
     public function check(
@@ -24,7 +24,7 @@ class Anything implements Checker
     public function canCheck(): array
     {
         return [
-            AnythingRule::class,
+            Anything::class,
         ];
     }
 }

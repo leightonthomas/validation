@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Tests\Validation\Unit\Checker;
 
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Anything;
-use Validation\Rule\Anything as AnythingRule;
+use Validation\Checker\AnythingChecker;
+use Validation\Rule\Anything;
 
-class AnythingTest extends TestCase
+class AnythingCheckerTest extends TestCase
 {
 
-    private Anything $checker;
+    private AnythingChecker $checker;
 
     public function setUp(): void
     {
-        $this->checker = new Anything();
+        $this->checker = new AnythingChecker();
     }
 
     /**
@@ -25,7 +25,7 @@ class AnythingTest extends TestCase
     {
         self::assertEquals(
             [
-                AnythingRule::class,
+                Anything::class,
             ],
             $this->checker->canCheck(),
         );

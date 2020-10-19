@@ -6,7 +6,7 @@ namespace Tests\Validation\Integration\Checker\Arrays;
 
 use Tests\Validation\DataProvider\TypeProvider;
 use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Anything;
+use Validation\Checker\AnythingChecker;
 use Validation\Checker\Arrays\IsArrayChecker;
 use Validation\Checker\Checker;
 use Validation\Checker\Combination\UnionChecker;
@@ -30,7 +30,7 @@ class IsArrayCheckerTest extends CheckerTest
 
         $this->factory->register(new IsScalarChecker());
         $this->factory->register(new IsArrayChecker($this->factory));
-        $this->factory->register(new Anything());
+        $this->factory->register(new AnythingChecker());
         $this->factory->register(new UnionChecker($this->factory));
         $this->factory->register(
             new class implements Checker {

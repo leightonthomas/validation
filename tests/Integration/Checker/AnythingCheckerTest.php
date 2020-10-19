@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace Tests\Validation\Integration\Checker;
 
 use Tests\Validation\DataProvider\TypeProvider;
-use Validation\Checker\Anything;
+use Validation\Checker\AnythingChecker;
 use Validation\Exception\NoCheckersRegistered;
 use Validation\Rule\Anything as AnythingRule;
 
-class AnythingTest extends CheckerTest
+class AnythingCheckerTest extends CheckerTest
 {
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->factory->register(new Anything());
+        $this->factory->register(new AnythingChecker());
     }
 
     /**
