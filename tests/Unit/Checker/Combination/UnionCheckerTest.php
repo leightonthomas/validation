@@ -6,14 +6,14 @@ namespace Tests\Validation\Unit\Checker\Combination;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Combination\Union;
-use Validation\Rule\Combination\Union as UnionRule;
+use Validation\Checker\Combination\UnionChecker;
+use Validation\Rule\Combination\Union;
 use Validation\ValidatorFactory;
 
-class UnionTest extends TestCase
+class UnionCheckerTest extends TestCase
 {
 
-    private Union $checker;
+    private UnionChecker $checker;
 
     public function setUp(): void
     {
@@ -24,7 +24,7 @@ class UnionTest extends TestCase
             ->getMock()
         ;
 
-        $this->checker = new Union($factory);
+        $this->checker = new UnionChecker($factory);
     }
 
     /**
@@ -33,7 +33,7 @@ class UnionTest extends TestCase
     public function itWillBeConfiguredForTheCorrectChecks(): void
     {
         self::assertEquals(
-            [UnionRule::class],
+            [Union::class],
             $this->checker->canCheck(),
         );
     }

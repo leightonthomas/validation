@@ -6,15 +6,15 @@ namespace Tests\Validation\Integration\Checker\Combination;
 
 use Tests\Validation\Integration\Checker\CheckerTest;
 use Validation\Checker\Arrays\IsArrayChecker;
-use Validation\Checker\Combination\Union;
+use Validation\Checker\Combination\UnionChecker;
 use Validation\Checker\Scalar\IsScalar;
 use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Combination\Union as UnionRule;
+use Validation\Rule\Combination\Union;
 use Validation\Rule\Scalar\Boolean\IsBoolean;
 use Validation\Rule\Scalar\Integer\IsInteger;
 use Validation\Rule\Scalar\Strings\IsString;
 
-class UnionTest extends CheckerTest
+class UnionCheckerTest extends CheckerTest
 {
 
     public function setUp(): void
@@ -23,7 +23,7 @@ class UnionTest extends CheckerTest
 
         $this->factory->register(new IsScalar());
         $this->factory->register(new IsArrayChecker($this->factory));
-        $this->factory->register(new Union($this->factory));
+        $this->factory->register(new UnionChecker($this->factory));
     }
 
     /**
@@ -33,7 +33,7 @@ class UnionTest extends CheckerTest
      */
     public function itWillAddAnErrorIfNoRulesMatchedWhenOnlyOneRule(): void
     {
-        $rule = UnionRule::of(new IsString());
+        $rule = Union::of(new IsString());
 
         $result = $this->factory->create($rule)->validate(4);
 
@@ -51,7 +51,7 @@ class UnionTest extends CheckerTest
      */
     public function itWillAddAnErrorIfNoRulesMatchedWhenMultipleRules(): void
     {
-        $rule = UnionRule::of(new IsString())
+        $rule = Union::of(new IsString())
             ->or(new IsInteger())
             ->or(new IsBoolean())
         ;
@@ -72,7 +72,7 @@ class UnionTest extends CheckerTest
      */
     public function itWillNotAddAnErrorIfARuleMatchesWhenOnlyOneRule(): void
     {
-        $rule = UnionRule::of(new IsString());
+        $rule = Union::of(new IsString());
 
         $result = $this->factory->create($rule)->validate('hi');
 
@@ -90,7 +90,7 @@ class UnionTest extends CheckerTest
      */
     public function itWillNotAddAnErrorIfARuleMatchesWhenMultipleRules($validDatum): void
     {
-        $rule = UnionRule::of(new IsString())
+        $rule = Union::of(new IsString())
             ->or(new IsInteger())
             ->or(new IsBoolean())
         ;
@@ -118,8 +118,8 @@ class UnionTest extends CheckerTest
      */
     public function itWillAddACustomErrorMessageIfSet(): void
     {
-        $rule = UnionRule::of(new IsString());
-        $rule->setMessage(UnionRule::ERR_MESSAGE, 'my custom msg');
+        $rule = Union::of(new IsString());
+        $rule->setMessage(Union::ERR_MESSAGE, 'my custom msg');
 
         $result = $this->factory->create($rule)->validate(4);
 

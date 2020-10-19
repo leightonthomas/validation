@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Validation\Checker\Combination;
 
-use Validation\Rule\Combination\Union as UnionRule;
-use Validation\Rule\Rule;
 use Validation\Checker\Checker;
+use Validation\Rule\Combination\Union;
+use Validation\Rule\Rule;
 use Validation\ValidationResult;
 use Validation\ValidatorFactory;
 
 /**
- * @implements Checker<UnionRule>
+ * @implements Checker<Union>
  */
-class Union implements Checker
+class UnionChecker implements Checker
 {
 
     private ValidatorFactory $factory;
@@ -26,8 +26,8 @@ class Union implements Checker
     /**
      * {@inheritdoc}
      *
-     * @param UnionRule $rule
-     * @psalm-param UnionRule<mixed, mixed> $rule
+     * @param Union $rule
+     * @psalm-param Union<mixed, mixed> $rule
      */
     public function check(
         $value,
@@ -40,13 +40,13 @@ class Union implements Checker
             }
         }
 
-        $result->addError($rule->getMessages()[UnionRule::ERR_MESSAGE]);
+        $result->addError($rule->getMessages()[Union::ERR_MESSAGE]);
     }
 
     public function canCheck(): array
     {
         return [
-            UnionRule::class,
+            Union::class,
         ];
     }
 }
