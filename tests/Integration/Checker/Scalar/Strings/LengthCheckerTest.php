@@ -6,20 +6,20 @@ namespace Tests\Validation\Integration\Checker\Scalar\Strings;
 
 use Tests\Validation\DataProvider\TypeProvider;
 use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Scalar\Strings\Length;
+use Validation\Checker\Scalar\Strings\LengthChecker;
 use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Scalar\Strings\Length as LengthRule;
+use Validation\Rule\Scalar\Strings\Length;
 
 use function is_string;
 
-class LengthTest extends CheckerTest
+class LengthCheckerTest extends CheckerTest
 {
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->factory->register(new Length());
+        $this->factory->register(new LengthChecker());
     }
 
     /**
@@ -32,7 +32,7 @@ class LengthTest extends CheckerTest
      */
     public function itWillAddAnErrorIfNotAString($value): void
     {
-        $rule = new LengthRule(null, 100);
+        $rule = new Length(null, 100);
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -53,8 +53,8 @@ class LengthTest extends CheckerTest
      */
     public function itWillAddCustomErrorIfNotAStringAndConfigured($value): void
     {
-        $rule = new LengthRule(null, 100);
-        $rule->setMessage(LengthRule::ERR_NOT_STRING, 'my msg');
+        $rule = new Length(null, 100);
+        $rule->setMessage(Length::ERR_NOT_STRING, 'my msg');
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -86,7 +86,7 @@ class LengthTest extends CheckerTest
      */
     public function itWillAddErrorIfTooShort(string $value): void
     {
-        $rule = new LengthRule(3);
+        $rule = new Length(3);
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -107,8 +107,8 @@ class LengthTest extends CheckerTest
      */
     public function itWillAddCustomerErrorIfConfiguredAndTooShort(string $value): void
     {
-        $rule = new LengthRule(3);
-        $rule->setMessage(LengthRule::ERR_TOO_SHORT, 'my msg');
+        $rule = new Length(3);
+        $rule->setMessage(Length::ERR_TOO_SHORT, 'my msg');
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -138,7 +138,7 @@ class LengthTest extends CheckerTest
      */
     public function itWillAddErrorIfTooLong(string $value): void
     {
-        $rule = new LengthRule(null, 3);
+        $rule = new Length(null, 3);
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -159,8 +159,8 @@ class LengthTest extends CheckerTest
      */
     public function itWillAddCustomerErrorIfConfiguredAndTooLong(string $value): void
     {
-        $rule = new LengthRule(null, 3);
-        $rule->setMessage(LengthRule::ERR_TOO_LONG, 'my msg');
+        $rule = new Length(null, 3);
+        $rule->setMessage(Length::ERR_TOO_LONG, 'my msg');
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -190,7 +190,7 @@ class LengthTest extends CheckerTest
      */
     public function itWillNotAddErrorIfValueLongerThanOrEqualToMin(string $value): void
     {
-        $rule = new LengthRule(3);
+        $rule = new Length(3);
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -220,7 +220,7 @@ class LengthTest extends CheckerTest
      */
     public function itWillNotAddErrorIfValueShorterThanOrEqualToMax(string $value): void
     {
-        $rule = new LengthRule(null, 6);
+        $rule = new Length(null, 6);
 
         $result = $this->factory->create($rule)->validate($value);
 

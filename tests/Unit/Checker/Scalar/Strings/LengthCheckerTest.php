@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Tests\Validation\Unit\Checker\Scalar\Strings;
 
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Scalar\Strings\Length;
-use Validation\Rule\Scalar\Strings\Length as LengthRule;
+use Validation\Checker\Scalar\Strings\LengthChecker;
+use Validation\Rule\Scalar\Strings\Length;
 
-class LengthTest extends TestCase
+class LengthCheckerTest extends TestCase
 {
 
-    private Length $checker;
+    private LengthChecker $checker;
 
     public function setUp(): void
     {
-        $this->checker = new Length();
+        $this->checker = new LengthChecker();
     }
 
     /**
@@ -25,7 +25,7 @@ class LengthTest extends TestCase
     {
         self::assertEquals(
             [
-                LengthRule::class,
+                Length::class,
             ],
             $this->checker->canCheck(),
         );

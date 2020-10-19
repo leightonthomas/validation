@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Validation\Checker\Scalar\Strings;
 
-use Validation\Rule\Rule;
 use Validation\Checker\Checker;
-use Validation\Rule\Scalar\Strings\Length as LengthRule;
+use Validation\Rule\Rule;
+use Validation\Rule\Scalar\Strings\Length;
 use Validation\ValidationResult;
 
 use function is_string;
@@ -14,15 +14,15 @@ use function preg_replace;
 use function strlen;
 
 /**
- * @implements Checker<LengthRule>
+ * @implements Checker<Length>
  */
-class Length implements Checker
+class LengthChecker implements Checker
 {
 
     /**
      * {@inheritdoc}
      *
-     * @param LengthRule $rule
+     * @param Length $rule
      */
     public function check(
         $value,
@@ -30,7 +30,7 @@ class Length implements Checker
         ValidationResult $result
     ): void {
         if (! is_string($value)) {
-            $result->addError($rule->getMessages()[LengthRule::ERR_NOT_STRING]);
+            $result->addError($rule->getMessages()[Length::ERR_NOT_STRING]);
 
             return;
         }
@@ -42,11 +42,11 @@ class Length implements Checker
 
         $minMessage = $this->processTemplatedMessage(
             $rule,
-            $rule->getMessages()[LengthRule::ERR_TOO_SHORT],
+            $rule->getMessages()[Length::ERR_TOO_SHORT],
         );
         $maxMessage = $this->processTemplatedMessage(
             $rule,
-            $rule->getMessages()[LengthRule::ERR_TOO_LONG],
+            $rule->getMessages()[Length::ERR_TOO_LONG],
         );
 
         if (($min !== null) && ($length < $min)) {
@@ -65,11 +65,11 @@ class Length implements Checker
     public function canCheck(): array
     {
         return [
-            LengthRule::class,
+            Length::class,
         ];
     }
 
-    private function processTemplatedMessage(LengthRule $rule, string $message): string
+    private function processTemplatedMessage(Length $rule, string $message): string
     {
         $message = preg_replace(
             '/{{\s*minimum\s*}}/',
