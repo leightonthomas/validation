@@ -6,18 +6,18 @@ namespace Tests\Validation\Integration\Checker;
 
 use stdClass;
 use Tests\Validation\DataProvider\TypeProvider;
-use Validation\Checker\StrictEquals;
+use Validation\Checker\StrictEqualsChecker;
 use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\StrictEquals as StrictEqualsRule;
+use Validation\Rule\StrictEquals;
 
-class StrictEqualsTest extends CheckerTest
+class StrictEqualsCheckerTest extends CheckerTest
 {
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->factory->register(new StrictEquals());
+        $this->factory->register(new StrictEqualsChecker());
     }
 
     /**
@@ -31,7 +31,7 @@ class StrictEqualsTest extends CheckerTest
      */
     public function itWillAddAnErrorIfTheValueIsNotTheSame($expected, $value): void
     {
-        $rule = new StrictEqualsRule($expected);
+        $rule = new StrictEquals($expected);
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -53,8 +53,8 @@ class StrictEqualsTest extends CheckerTest
      */
     public function itWillAddACustomErrorIfConfiguredAndIfTheValueIsNotTheSame($expected, $value): void
     {
-        $rule = new StrictEqualsRule($expected);
-        $rule->setMessage(StrictEqualsRule::ERR_INVALID, 'my msg');
+        $rule = new StrictEquals($expected);
+        $rule->setMessage(StrictEquals::ERR_INVALID, 'my msg');
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -92,7 +92,7 @@ class StrictEqualsTest extends CheckerTest
      */
     public function itWillNotAddAnErrorIfTheValueIsTheSame($value): void
     {
-        $rule = new StrictEqualsRule($value);
+        $rule = new StrictEquals($value);
 
         $result = $this->factory->create($rule)->validate($value);
 

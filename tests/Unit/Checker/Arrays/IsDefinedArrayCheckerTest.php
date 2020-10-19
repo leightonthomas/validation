@@ -10,7 +10,7 @@ use Validation\Checker\Arrays\IsDefinedArrayChecker;
 use Validation\Rule\Arrays\IsDefinedArray;
 use Validation\ValidatorFactory;
 
-class IsDefinedArrayTest extends TestCase
+class IsDefinedArrayCheckerTest extends TestCase
 {
 
     private IsDefinedArrayChecker $checker;

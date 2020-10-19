@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace Validation\Checker;
 
 use Validation\Rule\Rule;
-use Validation\Rule\StrictEquals as StrictEqualsRule;
+use Validation\Rule\StrictEquals;
 use Validation\ValidationResult;
 
 /**
- * @implements Checker<StrictEqualsRule>
+ * @implements Checker<StrictEquals>
  */
-class StrictEquals implements Checker
+class StrictEqualsChecker implements Checker
 {
 
     /**
      * {@inheritdoc}
      *
-     * @psalm-param StrictEqualsRule $rule
+     * @psalm-param StrictEquals $rule
      */
     public function check(
         $value,
@@ -28,13 +28,13 @@ class StrictEquals implements Checker
             return;
         }
 
-        $result->addError($rule->getMessages()[StrictEqualsRule::ERR_INVALID]);
+        $result->addError($rule->getMessages()[StrictEquals::ERR_INVALID]);
     }
 
     public function canCheck(): array
     {
         return [
-            StrictEqualsRule::class,
+            StrictEquals::class,
         ];
     }
 }

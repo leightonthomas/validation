@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Tests\Validation\Unit\Checker;
 
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\StrictEquals;
-use Validation\Rule\StrictEquals as StrictEqualsRule;
+use Validation\Checker\StrictEqualsChecker;
+use Validation\Rule\StrictEquals;
 
-class StrictEqualsTest extends TestCase
+class StrictEqualsCheckerTest extends TestCase
 {
 
-    private StrictEquals $checker;
+    private StrictEqualsChecker $checker;
 
     public function setUp(): void
     {
-        $this->checker = new StrictEquals();
+        $this->checker = new StrictEqualsChecker();
     }
 
     /**
@@ -25,7 +25,7 @@ class StrictEqualsTest extends TestCase
     {
         self::assertEquals(
             [
-                StrictEqualsRule::class,
+                StrictEquals::class,
             ],
             $this->checker->canCheck(),
         );
