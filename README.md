@@ -17,42 +17,75 @@ Without the plugin, you won't receive for full typing for certain things (e.g. o
 <?php
 
 use Validation\Checker\Combination\ComposeChecker;
+use Validation\Checker\Combination\UnionChecker;
+use Validation\Checker\Scalar\Integer\IsGreaterThanChecker;
 use Validation\Checker\Scalar\IsScalarChecker;
+use Validation\Checker\StrictEqualsChecker;
 use Validation\Rule\Arrays\IsDefinedArray;
 use Validation\Rule\Combination\Compose;
 use Validation\Rule\Combination\Union;
+use Validation\Rule\Scalar\Integer\IsGreaterThan;
 use Validation\Rule\Scalar\Integer\IsInteger;
 use Validation\Rule\StrictEquals;
 use Validation\ValidatorFactory;
 use Validation\Checker\Arrays\IsDefinedArrayChecker;
 
-// Set up the ValidatorFactory and register all Checkers that are going to be used
+// Set up the ValidatorFactory and register all available Checkers
 $factory = new ValidatorFactory();
 $factory->register(new IsDefinedArrayChecker($factory));
 $factory->register(new IsScalarChecker());
-$factory->register(new StrictEquals());
+$factory->register(new StrictEqualsChecker());
 $factory->register(new ComposeChecker($factory));
+$factory->register(new IsGreaterThanChecker());
+$factory->register(new UnionChecker($factory));
 
-$moneyAmount = Compose::from(new IsInteger())
+// Compose rules
+$isCurrencyCode = Union::of(new StrictEquals('GBP'))
+    ->or(new StrictEquals('USD'))
+    ->setMessage(Union::ERR_MESSAGE, 'This must be a valid currency code.')
+;
+
+$isMoneyAmount = Compose::from(new IsInteger())
     ->and(new IsGreaterThan(0))
 ;
 
-$myRule = IsDefinedArray::of(
-    'currency',
-    Union::of(new StrictEquals('GBP'))->or(new StrictEquals('USD')), 
-)
-    ->and(
-        'amount', 
-        new IsInteger()
-    )
+$myRule = IsDefinedArray::of('currency', $isCurrencyCode)
+    ->and('amount', $isMoneyAmount)
 ;
+
+// Create a reusable validator for the Rule to validate against
+$validator = $factory->create($myRule);
+
+// The type of this is ValidationResult<array{currency: string(GBP)|string(USD), amount: int}>
+$result = $validator->validate([]);
+
+if ($result->isValid()) {
+    // This will be typed as array{currency: string(GBP)|string(USD), amount: int}
+    $outputValue = $result->getValue();
+} else {
+    /**
+     * Output:
+     * [
+     *     'currency' => [
+     *         'This must be a valid currency code.',
+     *     ],
+     *     'amount' => [
+     *         'This value must be of type integer.',
+     *     ],
+     * ]
+     */
+    var_dump($result->getErrors());
+}
 ```
 
 ## TODO
 
 * Do a pass over the checkers to make sure they still validate the correct type
     * For cases where someone is not using the static analysis features
+* Add doc-blocks that explain what they do and are for
 * Finish off basic rules
+    * LessThan (int)
+    * Optional keys for IsDefinedArray
     * Multibyte string support
 * Set up Travis
 * Write some examples
@@ -60,4 +93,4 @@ $myRule = IsDefinedArray::of(
 * Test project by requiring on another one and installing plugin - does it work correctly?
     * Write up some validators for known API routes, see if any issues arise
 * Investigate PHPStan support
-
+* Do a Psalm pass over the tests, get that Psalm'd up
