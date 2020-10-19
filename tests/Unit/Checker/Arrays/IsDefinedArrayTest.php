@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Tests\Validation\Unit\Checker\Arrays;
 
 use PHPUnit\Framework\MockObject\MockObject;
-use Validation\Checker\Arrays\IsDefinedArray;
 use PHPUnit\Framework\TestCase;
-use Validation\Rule\Arrays\IsDefinedArray as IsDefinedArrayRule;
+use Validation\Checker\Arrays\IsDefinedArrayChecker;
+use Validation\Rule\Arrays\IsDefinedArray;
 use Validation\ValidatorFactory;
 
 class IsDefinedArrayTest extends TestCase
 {
 
-    private IsDefinedArray $checker;
+    private IsDefinedArrayChecker $checker;
 
     public function setUp(): void
     {
@@ -24,7 +24,7 @@ class IsDefinedArrayTest extends TestCase
             ->getMock()
         ;
 
-        $this->checker = new IsDefinedArray($factory);
+        $this->checker = new IsDefinedArrayChecker($factory);
     }
 
     /**
@@ -33,7 +33,7 @@ class IsDefinedArrayTest extends TestCase
     public function itWillBeConfiguredForTheCorrectChecks(): void
     {
         self::assertEquals(
-            [IsDefinedArrayRule::class],
+            [IsDefinedArray::class],
             $this->checker->canCheck(),
         );
     }

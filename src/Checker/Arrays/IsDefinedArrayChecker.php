@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Validation\Checker\Arrays;
 
-use Validation\Rule\Arrays\IsDefinedArray as IsDefinedArrayRule;
-use Validation\Rule\Rule;
 use Validation\Checker\Checker;
+use Validation\Rule\Arrays\IsDefinedArray;
+use Validation\Rule\Rule;
 use Validation\ValidationResult;
 use Validation\ValidatorFactory;
 
@@ -14,9 +14,9 @@ use function array_key_exists;
 use function is_array;
 
 /**
- * @implements Checker<IsDefinedArrayRule<array>>
+ * @implements Checker<IsDefinedArray<array>>
  */
-class IsDefinedArray implements Checker
+class IsDefinedArrayChecker implements Checker
 {
 
     private ValidatorFactory $factory;
@@ -29,8 +29,8 @@ class IsDefinedArray implements Checker
     /**
      * {@inheritdoc}
      *
-     * @param IsDefinedArrayRule $rule
-     * @psalm-param IsDefinedArrayRule<array> $rule
+     * @param IsDefinedArray $rule
+     * @psalm-param IsDefinedArray<array> $rule
      */
     public function check(
         $value,
@@ -38,7 +38,7 @@ class IsDefinedArray implements Checker
         ValidationResult $result
     ): void {
         if (! is_array($value)) {
-            $result->addError($rule->getMessages()[IsDefinedArrayRule::ERR_NOT_ARRAY]);
+            $result->addError($rule->getMessages()[IsDefinedArray::ERR_NOT_ARRAY]);
 
             return;
         }
@@ -47,7 +47,7 @@ class IsDefinedArray implements Checker
             $result->addToPath((string) $expectedKey);
 
             if (! array_key_exists($expectedKey, $value)) {
-                $result->addError($rule->getMessages()[IsDefinedArrayRule::ERR_KEY_MISSING]);
+                $result->addError($rule->getMessages()[IsDefinedArray::ERR_KEY_MISSING]);
 
                 $result->removeLastPath();
 
@@ -69,7 +69,7 @@ class IsDefinedArray implements Checker
     public function canCheck(): array
     {
         return [
-            IsDefinedArrayRule::class,
+            IsDefinedArray::class,
         ];
     }
 }

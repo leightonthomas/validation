@@ -8,17 +8,17 @@ use Tests\Validation\DataProvider\TypeProvider;
 use Tests\Validation\Integration\Checker\CheckerTest;
 use Validation\Checker\Anything;
 use Validation\Checker\Arrays\IsArrayChecker;
-use Validation\Checker\Arrays\IsDefinedArray;
+use Validation\Checker\Arrays\IsDefinedArrayChecker;
 use Validation\Checker\Combination\Union;
 use Validation\Checker\Scalar\IsScalar;
 use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Arrays\IsDefinedArray as IsDefinedArrayRule;
+use Validation\Rule\Arrays\IsDefinedArray;
 use Validation\Rule\Scalar\Integer\IsInteger;
 use Validation\Rule\Scalar\Strings\IsString;
 
 use function is_array;
 
-class IsDefinedArrayTest extends CheckerTest
+class IsDefinedArrayCheckerTest extends CheckerTest
 {
 
     public function setUp(): void
@@ -28,7 +28,7 @@ class IsDefinedArrayTest extends CheckerTest
         $this->factory->register(new IsScalar());
         $this->factory->register(new Union($this->factory));
         $this->factory->register(new IsArrayChecker($this->factory));
-        $this->factory->register(new IsDefinedArray($this->factory));
+        $this->factory->register(new IsDefinedArrayChecker($this->factory));
         $this->factory->register(new Anything());
     }
 
@@ -42,7 +42,7 @@ class IsDefinedArrayTest extends CheckerTest
      */
     public function itWillAddAnErrorIfNotAnArray($value): void
     {
-        $rule = IsDefinedArrayRule::of('a', new IsString());
+        $rule = IsDefinedArray::of('a', new IsString());
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -62,8 +62,8 @@ class IsDefinedArrayTest extends CheckerTest
      */
     public function itWillAddACustomMessageIfConfiguredIfNotAnArray($value): void
     {
-        $rule = IsDefinedArrayRule::of('a', new IsString());
-        $rule->setMessage(IsDefinedArrayRule::ERR_NOT_ARRAY, 'my custom message');
+        $rule = IsDefinedArray::of('a', new IsString());
+        $rule->setMessage(IsDefinedArray::ERR_NOT_ARRAY, 'my custom message');
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -92,7 +92,7 @@ class IsDefinedArrayTest extends CheckerTest
     public function itWillAddErrorsForMissingKeysWhenOnlyOnePairProvided(): void
     {
         $input = [];
-        $rule = IsDefinedArrayRule::of('a', new IsInteger());
+        $rule = IsDefinedArray::of('a', new IsInteger());
 
         $result = $this->factory->create($rule)->validate($input);
 
@@ -113,7 +113,7 @@ class IsDefinedArrayTest extends CheckerTest
     public function itWillAddErrorsForMissingKeysWhenMultiplePairsProvided(): void
     {
         $input = [];
-        $rule = IsDefinedArrayRule::of('a', new IsInteger())->and('b', new IsString());
+        $rule = IsDefinedArray::of('a', new IsInteger())->and('b', new IsString());
 
         $result = $this->factory->create($rule)->validate($input);
 
@@ -135,7 +135,7 @@ class IsDefinedArrayTest extends CheckerTest
     public function itWillUseCustomMessageForMissingKeyIfProvided(): void
     {
         $input = [];
-        $rule = IsDefinedArrayRule::of('a', new IsInteger())->setMessage(IsDefinedArrayRule::ERR_KEY_MISSING, 'my msg');
+        $rule = IsDefinedArray::of('a', new IsInteger())->setMessage(IsDefinedArray::ERR_KEY_MISSING, 'my msg');
 
         $result = $this->factory->create($rule)->validate($input);
 
@@ -156,7 +156,7 @@ class IsDefinedArrayTest extends CheckerTest
     public function itWillAddErrorsForInvalidValuesWhenOnlyOnePairProvided(): void
     {
         $input = ['a' => 'b'];
-        $rule = IsDefinedArrayRule::of('a', new IsInteger());
+        $rule = IsDefinedArray::of('a', new IsInteger());
 
         $result = $this->factory->create($rule)->validate($input);
 
@@ -177,7 +177,7 @@ class IsDefinedArrayTest extends CheckerTest
     public function itWillAddErrorsForInvalidValuesWhenMultiplePairsProvided(): void
     {
         $input = ['a' => 'aaaaa', 'b' => 11111];
-        $rule = IsDefinedArrayRule::of('a', new IsInteger())->and('b', new IsString());
+        $rule = IsDefinedArray::of('a', new IsInteger())->and('b', new IsString());
 
         $result = $this->factory->create($rule)->validate($input);
 
@@ -199,7 +199,7 @@ class IsDefinedArrayTest extends CheckerTest
     public function itWillNotAddErrorsForValidValuesWhenOnlyOnePairProvided(): void
     {
         $input = ['a' => 1111];
-        $rule = IsDefinedArrayRule::of('a', new IsInteger());
+        $rule = IsDefinedArray::of('a', new IsInteger());
 
         $result = $this->factory->create($rule)->validate($input);
 
@@ -215,7 +215,7 @@ class IsDefinedArrayTest extends CheckerTest
     public function itWillNotAddErrorsForValidValuesWhenMultiplePairsProvided(): void
     {
         $input = ['a' => 1111, 'b' => 'bbbbbb'];
-        $rule = IsDefinedArrayRule::of('a', new IsInteger())->and('b', new IsString());
+        $rule = IsDefinedArray::of('a', new IsInteger())->and('b', new IsString());
 
         $result = $this->factory->create($rule)->validate($input);
 
@@ -232,9 +232,9 @@ class IsDefinedArrayTest extends CheckerTest
     {
         $input = ['a' => []];
 
-        $rule = IsDefinedArrayRule::of(
+        $rule = IsDefinedArray::of(
             'a',
-            IsDefinedArrayRule::of('b', new IsString()),
+            IsDefinedArray::of('b', new IsString()),
         );
 
         $result = $this->factory->create($rule)->validate($input);

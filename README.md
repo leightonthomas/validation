@@ -18,15 +18,16 @@ Without the plugin, you won't receive for full typing for certain things (e.g. o
 
 use Validation\Checker\Combination\Compose;
 use Validation\Checker\Scalar\IsScalar;
+use Validation\Rule\Arrays\IsDefinedArray;
 use Validation\Rule\Combination\Union;
 use Validation\Rule\Scalar\Integer\IsInteger;
 use Validation\Rule\StrictEquals;
 use Validation\ValidatorFactory;
-use Validation\Checker\Arrays\IsDefinedArray;
+use Validation\Checker\Arrays\IsDefinedArrayChecker;
 
 // Set up the ValidatorFactory and register all Checkers that are going to be used
 $factory = new ValidatorFactory();
-$factory->register(new IsDefinedArray($factory));
+$factory->register(new IsDefinedArrayChecker($factory));
 $factory->register(new IsScalar());
 $factory->register(new StrictEquals());
 $factory->register(new Compose($factory));
@@ -35,7 +36,7 @@ $moneyAmount = \Validation\Rule\Combination\Compose::from(new IsInteger())
     ->and(new IsGreaterThan(0))
 ;
 
-$myRule = \Validation\Rule\Arrays\IsDefinedArray::of(
+$myRule = IsDefinedArray::of(
     'currency',
     Union::of(new StrictEquals('GBP'))->or(new StrictEquals('USD')), 
 )
