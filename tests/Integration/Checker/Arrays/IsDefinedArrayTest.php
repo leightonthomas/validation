@@ -7,7 +7,7 @@ namespace Tests\Validation\Integration\Checker\Arrays;
 use Tests\Validation\DataProvider\TypeProvider;
 use Tests\Validation\Integration\Checker\CheckerTest;
 use Validation\Checker\Anything;
-use Validation\Checker\Arrays\IsArray;
+use Validation\Checker\Arrays\IsArrayChecker;
 use Validation\Checker\Arrays\IsDefinedArray;
 use Validation\Checker\Combination\Union;
 use Validation\Checker\Scalar\IsScalar;
@@ -27,7 +27,7 @@ class IsDefinedArrayTest extends CheckerTest
 
         $this->factory->register(new IsScalar());
         $this->factory->register(new Union($this->factory));
-        $this->factory->register(new IsArray($this->factory));
+        $this->factory->register(new IsArrayChecker($this->factory));
         $this->factory->register(new IsDefinedArray($this->factory));
         $this->factory->register(new Anything());
     }

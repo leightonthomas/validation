@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Validation\Integration\Checker\Combination;
 
 use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Arrays\IsArray;
+use Validation\Checker\Arrays\IsArrayChecker;
 use Validation\Checker\Combination\Union;
 use Validation\Checker\Scalar\IsScalar;
 use Validation\Exception\NoCheckersRegistered;
@@ -22,7 +22,7 @@ class UnionTest extends CheckerTest
         parent::setUp();
 
         $this->factory->register(new IsScalar());
-        $this->factory->register(new IsArray($this->factory));
+        $this->factory->register(new IsArrayChecker($this->factory));
         $this->factory->register(new Union($this->factory));
     }
 

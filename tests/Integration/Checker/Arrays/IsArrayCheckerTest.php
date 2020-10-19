@@ -7,12 +7,12 @@ namespace Tests\Validation\Integration\Checker\Arrays;
 use Tests\Validation\DataProvider\TypeProvider;
 use Tests\Validation\Integration\Checker\CheckerTest;
 use Validation\Checker\Anything;
-use Validation\Checker\Arrays\IsArray;
+use Validation\Checker\Arrays\IsArrayChecker;
 use Validation\Checker\Checker;
 use Validation\Checker\Combination\Union;
 use Validation\Checker\Scalar\IsScalar;
 use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Arrays\IsArray as IsArrayRule;
+use Validation\Rule\Arrays\IsArray;
 use Validation\Rule\Arrays\IsDefinedArray;
 use Validation\Rule\Rule;
 use Validation\Rule\Scalar\Integer\IsInteger;
@@ -21,7 +21,7 @@ use Validation\ValidationResult;
 
 use function is_array;
 
-class IsArrayTest extends CheckerTest
+class IsArrayCheckerTest extends CheckerTest
 {
 
     public function setUp(): void
@@ -30,7 +30,7 @@ class IsArrayTest extends CheckerTest
 
         $this->factory->register(new IsScalar());
         $this->factory->register(new Union($this->factory));
-        $this->factory->register(new IsArray($this->factory));
+        $this->factory->register(new IsArrayChecker($this->factory));
         $this->factory->register(new Anything());
         $this->factory->register(
             new class implements Checker {
@@ -60,7 +60,7 @@ class IsArrayTest extends CheckerTest
      */
     public function itWillAddAnErrorIfNotAnArray($value): void
     {
-        $rule = new IsArrayRule();
+        $rule = new IsArray();
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -80,8 +80,8 @@ class IsArrayTest extends CheckerTest
      */
     public function itWillAddACustomMessageIfConfiguredIfNotAnArray($value): void
     {
-        $rule = new IsArrayRule();
-        $rule->setMessage(IsArrayRule::ERR_NOT_ARRAY, 'my custom message');
+        $rule = new IsArray();
+        $rule->setMessage(IsArray::ERR_NOT_ARRAY, 'my custom message');
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -110,7 +110,7 @@ class IsArrayTest extends CheckerTest
     public function itWillValidateWithDefaultRulesIfNoCustomOnesProvided(): void
     {
         $input = ['a' => 'b', 4 => 'c'];
-        $rule = new IsArrayRule();
+        $rule = new IsArray();
 
         $result = $this->factory->create($rule)->validate($input);
 
@@ -128,7 +128,7 @@ class IsArrayTest extends CheckerTest
         $input = ['a' => 'b', 4 => 'c'];
         $keyRule = new IsString();
         $valueRule = IsDefinedArray::of('a', new IsInteger());
-        $rule = new IsArrayRule($keyRule, $valueRule);
+        $rule = new IsArray($keyRule, $valueRule);
 
         $result = $this->factory->create($rule)->validate($input);
 
@@ -158,7 +158,7 @@ class IsArrayTest extends CheckerTest
         $input = ['a' => 1, 'b' => 2];
         $keyRule = new IsString();
         $valueRule = new IsInteger();
-        $rule = new IsArrayRule($keyRule, $valueRule);
+        $rule = new IsArray($keyRule, $valueRule);
 
         $result = $this->factory->create($rule)->validate($input);
 
@@ -176,8 +176,8 @@ class IsArrayTest extends CheckerTest
         $input = ['a' => 'b', 4 => 'c'];
         $keyRule = new IsString();
         $valueRule = IsDefinedArray::of('a', new IsInteger());
-        $rule = new IsArrayRule($keyRule, $valueRule);
-        $rule->setMessage(IsArrayRule::ERR_ANY_INVALID_VALUE, 'my custom message');
+        $rule = new IsArray($keyRule, $valueRule);
+        $rule->setMessage(IsArray::ERR_ANY_INVALID_VALUE, 'my custom message');
 
         $result = $this->factory->create($rule)->validate($input);
 

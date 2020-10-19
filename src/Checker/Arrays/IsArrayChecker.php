@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Validation\Checker\Arrays;
 
+use Validation\Checker\Checker;
 use Validation\Rule\Anything;
-use Validation\Rule\Arrays\IsArray as IsArrayRule;
+use Validation\Rule\Arrays\IsArray;
 use Validation\Rule\Combination\Union;
 use Validation\Rule\Rule;
-use Validation\Checker\Checker;
 use Validation\Rule\Scalar\Integer\IsInteger;
 use Validation\Rule\Scalar\Strings\IsString;
 use Validation\ValidationResult;
@@ -18,9 +18,9 @@ use function is_array;
 use function preg_replace;
 
 /**
- * @implements Checker<IsArrayRule<array-key, mixed>>
+ * @implements Checker<IsArray<array-key, mixed>>
  */
-class IsArray implements Checker
+class IsArrayChecker implements Checker
 {
 
     private ValidatorFactory $factory;
@@ -33,8 +33,8 @@ class IsArray implements Checker
     /**
      * {@inheritdoc}
      *
-     * @param IsArrayRule $rule
-     * @psalm-param IsArrayRule<array-key, mixed> $rule
+     * @param IsArray $rule
+     * @psalm-param IsArray<array-key, mixed> $rule
      */
     public function check(
         $value,
@@ -42,7 +42,7 @@ class IsArray implements Checker
         ValidationResult $result
     ): void {
         if (! is_array($value)) {
-            $result->addError($rule->getMessages()[IsArrayRule::ERR_NOT_ARRAY]);
+            $result->addError($rule->getMessages()[IsArray::ERR_NOT_ARRAY]);
 
             return;
         }
@@ -50,8 +50,8 @@ class IsArray implements Checker
         $keyValidator = $this->factory->create($rule->getKeyRule() ?? Union::of(new IsString())->or(new IsInteger()));
         $valueValidator = $this->factory->create($rule->getValueRule() ?? new Anything());
 
-        $anyBadValueMessage = $rule->getMessages()[IsArrayRule::ERR_ANY_INVALID_VALUE] ?? null;
-        $badKeyMessage = $rule->getMessages()[IsArrayRule::ERR_BAD_KEY];
+        $anyBadValueMessage = $rule->getMessages()[IsArray::ERR_ANY_INVALID_VALUE] ?? null;
+        $badKeyMessage = $rule->getMessages()[IsArray::ERR_BAD_KEY];
 
         /**
          * @psalm-var array-key $key
@@ -89,7 +89,7 @@ class IsArray implements Checker
     public function canCheck(): array
     {
         return [
-            IsArrayRule::class,
+            IsArray::class,
         ];
     }
 }

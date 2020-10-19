@@ -6,7 +6,7 @@ namespace Tests\Validation\Integration\Checker\Combination;
 
 use stdClass;
 use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Arrays\IsArray;
+use Validation\Checker\Arrays\IsArrayChecker;
 use Validation\Checker\Checker;
 use Validation\Checker\Combination\Intersection;
 use Validation\Checker\Object\IsInstanceOf;
@@ -25,7 +25,7 @@ class IntersectionTest extends CheckerTest
         parent::setUp();
 
         $this->factory->register(new IsScalar());
-        $this->factory->register(new IsArray($this->factory));
+        $this->factory->register(new IsArrayChecker($this->factory));
         $this->factory->register(new Intersection($this->factory));
         $this->factory->register(new IsInstanceOf());
     }

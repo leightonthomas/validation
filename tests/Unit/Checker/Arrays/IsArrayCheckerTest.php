@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Tests\Validation\Unit\Checker\Arrays;
 
 use PHPUnit\Framework\MockObject\MockObject;
-use Validation\Checker\Arrays\IsArray;
 use PHPUnit\Framework\TestCase;
-use Validation\Rule\Arrays\IsArray as IsArrayRule;
+use Validation\Checker\Arrays\IsArrayChecker;
+use Validation\Rule\Arrays\IsArray;
 use Validation\ValidatorFactory;
 
-class IsArrayTest extends TestCase
+class IsArrayCheckerTest extends TestCase
 {
 
-    private IsArray $checker;
+    private IsArrayChecker $checker;
 
     public function setUp(): void
     {
@@ -24,7 +24,7 @@ class IsArrayTest extends TestCase
             ->getMock()
         ;
 
-        $this->checker = new IsArray($factory);
+        $this->checker = new IsArrayChecker($factory);
     }
 
     /**
@@ -33,7 +33,7 @@ class IsArrayTest extends TestCase
     public function itWillBeConfiguredForTheCorrectChecks(): void
     {
         self::assertEquals(
-            [IsArrayRule::class],
+            [IsArray::class],
             $this->checker->canCheck(),
         );
     }
