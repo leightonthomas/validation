@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Validation\Unit;
 
-use Validation\Checker\Scalar\IsScalar;
+use PHPUnit\Framework\TestCase;
+use Validation\Checker\Scalar\IsScalarChecker;
 use Validation\Exception\NoCheckersRegistered;
 use Validation\Rule\Scalar\Strings\IsString;
 use Validation\Validator;
-use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
 {
@@ -22,7 +22,7 @@ class ValidatorTest extends TestCase
     {
         $validator = new Validator(
             new IsString(),
-            [new IsScalar()]
+            [new IsScalarChecker()]
         );
 
         $result = $validator->validate(4);

@@ -10,7 +10,7 @@ use Validation\Checker\Anything;
 use Validation\Checker\Arrays\IsArrayChecker;
 use Validation\Checker\Checker;
 use Validation\Checker\Combination\UnionChecker;
-use Validation\Checker\Scalar\IsScalar;
+use Validation\Checker\Scalar\IsScalarChecker;
 use Validation\Exception\NoCheckersRegistered;
 use Validation\Rule\Arrays\IsArray;
 use Validation\Rule\Arrays\IsDefinedArray;
@@ -28,7 +28,7 @@ class IsArrayCheckerTest extends CheckerTest
     {
         parent::setUp();
 
-        $this->factory->register(new IsScalar());
+        $this->factory->register(new IsScalarChecker());
         $this->factory->register(new IsArrayChecker($this->factory));
         $this->factory->register(new Anything());
         $this->factory->register(new UnionChecker($this->factory));

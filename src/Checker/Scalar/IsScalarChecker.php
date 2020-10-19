@@ -4,28 +4,28 @@ declare(strict_types=1);
 
 namespace Validation\Checker\Scalar;
 
+use Validation\Checker\Checker;
 use Validation\Rule\Rule;
 use Validation\Rule\Scalar\Boolean\IsBoolean;
 use Validation\Rule\Scalar\Float\IsFloat;
 use Validation\Rule\Scalar\Integer\IsInteger;
+use Validation\Rule\Scalar\IsScalar;
 use Validation\Rule\Scalar\Strings\IsString;
-use Validation\Rule\Scalar\IsScalar as IsScalarRule;
-use Validation\Checker\Checker;
 use Validation\ValidationResult;
 
 use function gettype;
 use function preg_replace;
 
 /**
- * @implements Checker<IsScalarRule>
+ * @implements Checker<IsScalar>
  */
-class IsScalar implements Checker
+class IsScalarChecker implements Checker
 {
 
     /**
      * {@inheritdoc}
      *
-     * @param IsScalarRule $rule
+     * @param IsScalar $rule
      */
     public function check(
         $value,
@@ -38,7 +38,7 @@ class IsScalar implements Checker
             return;
         }
 
-        $message = $rule->getMessages()[IsScalarRule::ERR_MESSAGE];
+        $message = $rule->getMessages()[IsScalar::ERR_MESSAGE];
 
         $result->addError(preg_replace('/{{\s+expectedType\s+}}/', $expected, $message));
     }

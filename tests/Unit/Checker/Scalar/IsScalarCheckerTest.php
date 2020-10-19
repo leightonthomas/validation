@@ -5,20 +5,20 @@ declare(strict_types=1);
 namespace Tests\Validation\Unit\Checker\Scalar;
 
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Scalar\IsScalar;
+use Validation\Checker\Scalar\IsScalarChecker;
 use Validation\Rule\Scalar\Boolean\IsBoolean;
 use Validation\Rule\Scalar\Float\IsFloat;
 use Validation\Rule\Scalar\Integer\IsInteger;
 use Validation\Rule\Scalar\Strings\IsString;
 
-class IsScalarTest extends TestCase
+class IsScalarCheckerTest extends TestCase
 {
 
-    private IsScalar $checker;
+    private IsScalarChecker $checker;
 
     public function setUp(): void
     {
-        $this->checker = new IsScalar();
+        $this->checker = new IsScalarChecker();
     }
 
     /**

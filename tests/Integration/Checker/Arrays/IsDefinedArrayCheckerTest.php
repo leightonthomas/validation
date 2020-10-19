@@ -9,7 +9,7 @@ use Tests\Validation\Integration\Checker\CheckerTest;
 use Validation\Checker\Anything;
 use Validation\Checker\Arrays\IsArrayChecker;
 use Validation\Checker\Arrays\IsDefinedArrayChecker;
-use Validation\Checker\Scalar\IsScalar;
+use Validation\Checker\Scalar\IsScalarChecker;
 use Validation\Exception\NoCheckersRegistered;
 use Validation\Rule\Arrays\IsDefinedArray;
 use Validation\Rule\Scalar\Integer\IsInteger;
@@ -24,7 +24,7 @@ class IsDefinedArrayCheckerTest extends CheckerTest
     {
         parent::setUp();
 
-        $this->factory->register(new IsScalar());
+        $this->factory->register(new IsScalarChecker());
         $this->factory->register(new IsArrayChecker($this->factory));
         $this->factory->register(new IsDefinedArrayChecker($this->factory));
         $this->factory->register(new Anything());

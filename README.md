@@ -16,9 +16,10 @@ Without the plugin, you won't receive for full typing for certain things (e.g. o
 ```php
 <?php
 
-use Validation\Checker\Combination\Compose;
-use Validation\Checker\Scalar\IsScalar;
+use Validation\Checker\Combination\ComposeChecker;
+use Validation\Checker\Scalar\IsScalarChecker;
 use Validation\Rule\Arrays\IsDefinedArray;
+use Validation\Rule\Combination\Compose;
 use Validation\Rule\Combination\Union;
 use Validation\Rule\Scalar\Integer\IsInteger;
 use Validation\Rule\StrictEquals;
@@ -28,11 +29,11 @@ use Validation\Checker\Arrays\IsDefinedArrayChecker;
 // Set up the ValidatorFactory and register all Checkers that are going to be used
 $factory = new ValidatorFactory();
 $factory->register(new IsDefinedArrayChecker($factory));
-$factory->register(new IsScalar());
+$factory->register(new IsScalarChecker());
 $factory->register(new StrictEquals());
-$factory->register(new Compose($factory));
+$factory->register(new ComposeChecker($factory));
 
-$moneyAmount = \Validation\Rule\Combination\Compose::from(new IsInteger())
+$moneyAmount = Compose::from(new IsInteger())
     ->and(new IsGreaterThan(0))
 ;
 

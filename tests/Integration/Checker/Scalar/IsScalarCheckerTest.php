@@ -6,12 +6,12 @@ namespace Tests\Validation\Integration\Checker\Scalar;
 
 use Tests\Validation\DataProvider\TypeProvider;
 use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Scalar\IsScalar;
+use Validation\Checker\Scalar\IsScalarChecker;
 use Validation\Exception\NoCheckersRegistered;
 use Validation\Rule\Scalar\Boolean\IsBoolean;
 use Validation\Rule\Scalar\Float\IsFloat;
 use Validation\Rule\Scalar\Integer\IsInteger;
-use Validation\Rule\Scalar\IsScalar as IsScalarRule;
+use Validation\Rule\Scalar\IsScalar;
 use Validation\Rule\Scalar\Strings\IsString;
 
 use function is_bool;
@@ -19,27 +19,27 @@ use function is_float;
 use function is_integer;
 use function is_string;
 
-class IsScalarTest extends CheckerTest
+class IsScalarCheckerTest extends CheckerTest
 {
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->factory->register(new IsScalar());
+        $this->factory->register(new IsScalarChecker());
     }
 
     /**
      * @test
      * @dataProvider invalidProvider
      *
-     * @param IsScalarRule $rule
+     * @param IsScalar $rule
      * @param mixed $value
      * @param string $expectedTypeName
      *
      * @throws NoCheckersRegistered
      */
-    public function itWillAddAnErrorIfTypeDoesNotMatch(IsScalarRule $rule, $value, string $expectedTypeName): void
+    public function itWillAddAnErrorIfTypeDoesNotMatch(IsScalar $rule, $value, string $expectedTypeName): void
     {
         $result = $this->factory->create($rule)->validate($value);
 
@@ -54,12 +54,12 @@ class IsScalarTest extends CheckerTest
      * @test
      * @dataProvider validProvider
      *
-     * @param IsScalarRule $rule
+     * @param IsScalar $rule
      * @param mixed $value
      *
      * @throws NoCheckersRegistered
      */
-    public function itWillNotAddAnErrorIfValueValid(IsScalarRule $rule, $value): void
+    public function itWillNotAddAnErrorIfValueValid(IsScalar $rule, $value): void
     {
         $result = $this->factory->create($rule)->validate($value);
 
@@ -82,14 +82,14 @@ class IsScalarTest extends CheckerTest
      * @test
      * @dataProvider invalidProvider
      *
-     * @param IsScalarRule $rule
+     * @param IsScalar $rule
      * @param mixed $value
      *
      * @throws NoCheckersRegistered
      */
-    public function itWillAddACustomErrorMessageIfSet(IsScalarRule $rule, $value): void
+    public function itWillAddACustomErrorMessageIfSet(IsScalar $rule, $value): void
     {
-        $rule->setMessage(IsScalarRule::ERR_MESSAGE, 'my custom msg');
+        $rule->setMessage(IsScalar::ERR_MESSAGE, 'my custom msg');
 
         $result = $this->factory->create($rule)->validate($value);
 

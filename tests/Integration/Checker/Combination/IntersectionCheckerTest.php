@@ -10,7 +10,7 @@ use Validation\Checker\Arrays\IsArrayChecker;
 use Validation\Checker\Checker;
 use Validation\Checker\Combination\IntersectionChecker;
 use Validation\Checker\Object\IsInstanceOfChecker;
-use Validation\Checker\Scalar\IsScalar;
+use Validation\Checker\Scalar\IsScalarChecker;
 use Validation\Exception\NoCheckersRegistered;
 use Validation\Rule\Combination\Intersection;
 use Validation\Rule\Object\IsInstanceOf;
@@ -24,7 +24,7 @@ class IntersectionCheckerTest extends CheckerTest
     {
         parent::setUp();
 
-        $this->factory->register(new IsScalar());
+        $this->factory->register(new IsScalarChecker());
         $this->factory->register(new IsArrayChecker($this->factory));
         $this->factory->register(new IntersectionChecker($this->factory));
         $this->factory->register(new IsInstanceOfChecker());

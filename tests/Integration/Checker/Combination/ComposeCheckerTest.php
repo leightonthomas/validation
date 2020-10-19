@@ -6,7 +6,7 @@ namespace Tests\Validation\Integration\Checker\Combination;
 
 use Tests\Validation\Integration\Checker\CheckerTest;
 use Validation\Checker\Combination\ComposeChecker;
-use Validation\Checker\Scalar\IsScalar;
+use Validation\Checker\Scalar\IsScalarChecker;
 use Validation\Exception\NoCheckersRegistered;
 use Validation\Rule\Combination\Compose;
 use Validation\Rule\Scalar\Integer\IsInteger;
@@ -19,7 +19,7 @@ class ComposeCheckerTest extends CheckerTest
     {
         parent::setUp();
 
-        $this->factory->register(new IsScalar());
+        $this->factory->register(new IsScalarChecker());
         $this->factory->register(new ComposeChecker($this->factory));
     }
 
