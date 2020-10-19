@@ -56,7 +56,6 @@ $myRule = IsDefinedArray::of('currency', $isCurrencyCode)
 // Create a reusable validator for the Rule to validate against
 $validator = $factory->create($myRule);
 
-// The type of this is ValidationResult<array{currency: string(GBP)|string(USD), amount: int}>
 $result = $validator->validate([]);
 
 if ($result->isValid()) {
