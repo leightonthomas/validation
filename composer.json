@@ -1,6 +1,6 @@
 {
     "name": "leightonthomas/validation",
-    "type": "library",
+    "type": "psalm-plugin",
     "license": "MIT",
     "authors": [
         {
