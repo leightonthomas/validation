@@ -80,10 +80,12 @@ if ($result->isValid()) {
 ## TODO
 
 * Add keywords + description to composer
+* Add proper version (1.0.0) to composer
 * Do a pass over the checkers to make sure they still validate the correct type
     * For cases where someone is not using the static analysis features
 * Add doc-blocks that explain what Rules do and are for/what purpose they serve
 * Finish off basic rules
+    * Callback
     * Multibyte string support (?)
 * Set up Travis
 * Write some examples
