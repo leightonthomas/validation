@@ -1,6 +1,6 @@
 {
     "name": "leightonthomas/validation",
-    "type": "psalm-plugin",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -27,11 +27,6 @@
         "psalm/plugin-phpunit": "^0.12.2",
         "weirdan/codeception-psalm-module": "^0.9.1",
         "squizlabs/php_codesniffer": "^3.5"
-    },
-    "extra": {
-        "psalm": {
-            "pluginClass": "Validation\\Plugin\\Plugin"
-        }
     },
     "scripts": {
         "phpcs-fix": "vendor/bin/phpcbf --standard=PSR12 src/"
