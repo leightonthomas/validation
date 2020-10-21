@@ -151,6 +151,47 @@ class IsDefinedArrayCheckerTest extends CheckerTest
      *
      * @throws NoCheckersRegistered
      */
+    public function itWillNotAddErrorsForMissingKeyIfOptionalWhenOnlyOneKey(): void
+    {
+        $input = [];
+        $rule = IsDefinedArray::ofMaybe('a', new IsInteger());
+
+        $result = $this->factory->create($rule)->validate($input);
+
+        self::assertTrue($result->isValid());
+        self::assertEquals(
+            [],
+            $result->getErrors(),
+        );
+    }
+
+    /**
+     * @test
+     *
+     * @throws NoCheckersRegistered
+     */
+    public function itWillNotAddErrorsForMissingKeyIfOptionalWhenOnlyMultipleKeys(): void
+    {
+        $input = [];
+        $rule = IsDefinedArray::ofMaybe('a', new IsInteger())
+            ->andMaybe('b', new IsInteger())
+            ->and('c', new IsInteger())
+        ;
+
+        $result = $this->factory->create($rule)->validate($input);
+
+        self::assertFalse($result->isValid());
+        self::assertEquals(
+            ['c' => ['This key is missing.']],
+            $result->getErrors(),
+        );
+    }
+
+    /**
+     * @test
+     *
+     * @throws NoCheckersRegistered
+     */
     public function itWillAddErrorsForInvalidValuesWhenOnlyOnePairProvided(): void
     {
         $input = ['a' => 'b'];
@@ -172,10 +213,31 @@ class IsDefinedArrayCheckerTest extends CheckerTest
      *
      * @throws NoCheckersRegistered
      */
+    public function itWillAddErrorsForInvalidValuesWhenOnlyOneOptionalPairProvided(): void
+    {
+        $input = ['a' => 'b'];
+        $rule = IsDefinedArray::ofMaybe('a', new IsInteger());
+
+        $result = $this->factory->create($rule)->validate($input);
+
+        self::assertEquals(
+            [
+                'a' => ['This value must be of type integer.'],
+            ],
+            $result->getErrors(),
+        );
+        self::assertFalse($result->isValid());
+    }
+
+    /**
+     * @test
+     *
+     * @throws NoCheckersRegistered
+     */
     public function itWillAddErrorsForInvalidValuesWhenMultiplePairsProvided(): void
     {
         $input = ['a' => 'aaaaa', 'b' => 11111];
-        $rule = IsDefinedArray::of('a', new IsInteger())->and('b', new IsString());
+        $rule = IsDefinedArray::of('a', new IsInteger())->andMaybe('b', new IsString());
 
         $result = $this->factory->create($rule)->validate($input);
 
@@ -213,7 +275,7 @@ class IsDefinedArrayCheckerTest extends CheckerTest
     public function itWillNotAddErrorsForValidValuesWhenMultiplePairsProvided(): void
     {
         $input = ['a' => 1111, 'b' => 'bbbbbb'];
-        $rule = IsDefinedArray::of('a', new IsInteger())->and('b', new IsString());
+        $rule = IsDefinedArray::of('a', new IsInteger())->andMaybe('b', new IsString());
 
         $result = $this->factory->create($rule)->validate($input);
 

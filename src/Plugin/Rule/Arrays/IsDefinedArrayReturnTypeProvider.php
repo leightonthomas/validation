@@ -16,6 +16,7 @@ use function array_flip;
 use function array_key_exists;
 use function array_key_first;
 use function array_keys;
+use function in_array;
 
 /**
  * @internal
@@ -39,10 +40,7 @@ class IsDefinedArrayReturnTypeProvider implements MethodReturnTypeProviderInterf
         string $called_fq_classlike_name = null,
         string $called_method_name_lowercase = null
     ) {
-        if (
-            $method_name_lowercase !== 'of' &&
-            $method_name_lowercase !== 'and'
-        ) {
+        if (! in_array($method_name_lowercase, ['of', 'ofmaybe', 'and', 'andmaybe'])) {
             return null;
         }
 
@@ -109,7 +107,13 @@ class IsDefinedArrayReturnTypeProvider implements MethodReturnTypeProviderInterf
             return null;
         }
 
-        if ($method_name_lowercase === 'of') {
+        if (in_array($method_name_lowercase, ['of', 'ofmaybe'])) {
+            $outputType = clone $secondArgRuleOutputType;
+
+            if ($method_name_lowercase === 'ofmaybe') {
+                $outputType->possibly_undefined = true;
+            }
+
             $classLike = new Type\Atomic\TGenericObject(
                 $fq_classlike_name,
                 [
@@ -117,7 +121,7 @@ class IsDefinedArrayReturnTypeProvider implements MethodReturnTypeProviderInterf
                         [
                             new Type\Atomic\ObjectLike(
                                 [
-                                    $firstArgType->value => $secondArgRuleOutputType,
+                                    $firstArgType->value => $outputType,
                                 ]
                             ),
                         ],
@@ -139,7 +143,12 @@ class IsDefinedArrayReturnTypeProvider implements MethodReturnTypeProviderInterf
             return null;
         }
 
-        $existingArray->properties[$firstArgType->value] = $secondArgRuleOutputType;
+        $outputType = clone $secondArgRuleOutputType;
+        if ($method_name_lowercase === 'andmaybe') {
+            $outputType->possibly_undefined = true;
+        }
+
+        $existingArray->properties[$firstArgType->value] = $outputType;
 
         $classLike = new Type\Atomic\TGenericObject(
             $fq_classlike_name,

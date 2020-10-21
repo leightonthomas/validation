@@ -39,10 +39,36 @@ Feature: IsDefinedArray Rule with no plugin
       | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array<array-key, mixed>> |
     And I see no other errors
 
+  Scenario: It will return a generic array type on construction of optional key
+    Given I have the following code
+      """
+      $rule = IsDefinedArray::ofMaybe('a', new IsString());
+
+      /** @psalm-trace $rule */
+      """
+    When I run Psalm
+    Then I see these errors
+      | Type  | Message                                                               |
+      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array<array-key, mixed>> |
+    And I see no other errors
+
   Scenario: It will return a generic array type on another key being added
     Given I have the following code
       """
       $rule = IsDefinedArray::of('a', new IsString())->and(4, new IsInteger());
+
+      /** @psalm-trace $rule */
+      """
+    When I run Psalm
+    Then I see these errors
+      | Type  | Message                                                               |
+      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array<array-key, mixed>> |
+    And I see no other errors
+
+  Scenario: It will return a generic array type on an optional key being added
+    Given I have the following code
+      """
+      $rule = IsDefinedArray::of('a', new IsString())->andMaybe(4, new IsInteger());
 
       /** @psalm-trace $rule */
       """

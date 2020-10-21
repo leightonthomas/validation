@@ -43,18 +43,21 @@ class IsDefinedArrayChecker implements Checker
             return;
         }
 
-        foreach ($rule->getPairs() as $expectedKey => $valueRule) {
+        foreach ($rule->getPairs() as $expectedKey => $arrayPair) {
             $result->addToPath((string) $expectedKey);
 
-            if (! array_key_exists($expectedKey, $value)) {
-                $result->addError($rule->getMessages()[IsDefinedArray::ERR_KEY_MISSING]);
+            $keyExists = array_key_exists($expectedKey, $value);
+            if (! $keyExists) {
+                if ($arrayPair->required) {
+                    $result->addError($rule->getMessages()[IsDefinedArray::ERR_KEY_MISSING]);
+                }
 
                 $result->removeLastPath();
 
                 continue;
             }
 
-            $valueResult = $this->factory->create($valueRule)->validate($value[$expectedKey]);
+            $valueResult = $this->factory->create($arrayPair->rule)->validate($value[$expectedKey]);
             if ($valueResult->isValid()) {
                 $result->removeLastPath();
 

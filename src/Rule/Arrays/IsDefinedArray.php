@@ -18,8 +18,8 @@ class IsDefinedArray extends Rule
     public const ERR_NOT_ARRAY = 1;
 
     /**
-     * @var Rule[]
-     * @psalm-var array<array-key, Rule<mixed, mixed>>
+     * @var ArrayPair[]
+     * @psalm-var array<array-key, ArrayPair>
      */
     private array $pairs;
 
@@ -39,7 +39,28 @@ class IsDefinedArray extends Rule
     {
         /** @psalm-var self<array> $instance */
         $instance = new self();
-        $instance->pairs[$key] = $value;
+        $instance->pairs = [$key => new ArrayPair($value, $key, true)];
+
+        return $instance;
+    }
+
+    /**
+     * @template NewV
+     *
+     * @param int|string $key
+     * @param Rule $value
+     *
+     * @psalm-param array-key $key
+     * @psalm-param Rule<mixed, NewV> $value
+     *
+     * @return self
+     * @psalm-return self<A>
+     */
+    public static function ofMaybe($key, Rule $value): self
+    {
+        /** @psalm-var self<array> $instance */
+        $instance = new self();
+        $instance->pairs = [$key => new ArrayPair($value, $key, false)];
 
         return $instance;
     }
@@ -58,14 +79,33 @@ class IsDefinedArray extends Rule
      */
     public function and($key, Rule $value): self
     {
-        $this->pairs[$key] = $value;
+        $this->pairs[$key] = new ArrayPair($value, $key, true);
 
         return $this;
     }
 
     /**
-     * @return Rule[]
-     * @psalm-return array<array-key, Rule<mixed, mixed>>
+     * @template NewV
+     *
+     * @param int|string $key
+     * @param Rule $value
+     *
+     * @psalm-param array-key $key
+     * @psalm-param Rule<mixed, NewV> $value
+     *
+     * @return self
+     * @psalm-return self<A>
+     */
+    public function andMaybe($key, Rule $value): self
+    {
+        $this->pairs[$key] = new ArrayPair($value, $key, false);
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayPair[]
+     * @psalm-return array<array-key, ArrayPair>
      */
     public function getPairs(): array
     {

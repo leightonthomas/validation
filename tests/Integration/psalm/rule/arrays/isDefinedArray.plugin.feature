@@ -28,6 +28,7 @@ Feature: IsDefinedArray Rule with the plugin
       use Validation\Rule\Arrays\IsDefinedArray;
       use Validation\Rule\Scalar\Strings\IsString;
       use Validation\Rule\Scalar\Integer\IsInteger;
+      use Validation\Rule\Scalar\Boolean\IsBoolean;
       use Validation\Rule\Combination\Union;
       """
 
@@ -44,20 +45,34 @@ Feature: IsDefinedArray Rule with the plugin
       | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{a: string}> |
     And I see no other errors
 
+  Scenario: It will return the correct type on construction of optional key
+    Given I have the following code
+      """
+      $rule = IsDefinedArray::ofMaybe('a', new IsString());
+
+      /** @psalm-trace $rule */
+      """
+    When I run Psalm
+    Then I see these errors
+      | Type  | Message                                                         |
+      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{a?: string}> |
+    And I see no other errors
+
   Scenario: It will return the correct type when more keys are added
     Given I have the following code
       """
       $rule = IsDefinedArray::of('a', new IsString())
           ->and(4, new IsInteger())
           ->and('another', Union::of(new IsString())->or(new IsInteger()))
+          ->andMaybe('someKey', new IsBoolean())
       ;
 
       /** @psalm-trace $rule */
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                                                      |
-      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{4: int, a: string, another: int\|string}> |
+      | Type  | Message                                                                                                      |
+      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{4: int, a: string, another: int\|string, someKey?: bool}> |
     And I see no other errors
 
   Scenario: It will return the correct type even if nested
@@ -68,7 +83,7 @@ Feature: IsDefinedArray Rule with the plugin
               4,
               IsDefinedArray::of(
                   'b',
-                  IsDefinedArray::of(
+                  IsDefinedArray::ofMaybe(
                       'c',
                       new IsString()
                   )
@@ -80,8 +95,8 @@ Feature: IsDefinedArray Rule with the plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                                                       |
-      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{4: array{b: array{c: string}}, a: string}> |
+      | Type  | Message                                                                                        |
+      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{4: array{b: array{c?: string}}, a: string}> |
     And I see no other errors
 
   Scenario: It will return the correct type when duplicate keys provided
@@ -97,6 +112,21 @@ Feature: IsDefinedArray Rule with the plugin
     Then I see these errors
       | Type  | Message                                                     |
       | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{a: int}> |
+    And I see no other errors
+
+  Scenario: It will return the correct type when duplicate keys provided but newer one is optional
+    Given I have the following code
+      """
+      $rule = IsDefinedArray::of('a', new IsString())
+          ->andMaybe('a', new IsInteger())
+      ;
+
+      /** @psalm-trace $rule */
+      """
+    When I run Psalm
+    Then I see these errors
+      | Type  | Message                                                      |
+      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{a?: int}> |
     And I see no other errors
 
   Scenario: It will return a type of array if invalid data is given
