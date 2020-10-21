@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Rule\Scalar\Strings;
+namespace Tests\LeightonThomas\Validation\Unit\Rule\Scalar\Strings;
 
 use Codeception\PHPUnit\TestCase;
-use Validation\Rule\Scalar\IsScalar;
-use Validation\Rule\Scalar\Strings\IsString;
+use LeightonThomas\Validation\Rule\Scalar\IsScalar;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
 
 class IsStringTest extends TestCase
 {

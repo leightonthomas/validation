@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Integration\Checker\Object;
+namespace Tests\LeightonThomas\Validation\Integration\Checker\Object;
 
+use LeightonThomas\Validation\Checker\Checker;
+use LeightonThomas\Validation\Checker\Object\IsInstanceOfChecker;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\Object\IsInstanceOf;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+use LeightonThomas\Validation\ValidatorFactory;
 use stdClass;
-use Tests\Validation\DataProvider\TypeProvider;
-use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Checker;
-use Validation\Checker\Object\IsInstanceOfChecker;
-use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Object\IsInstanceOf;
-use Validation\Rule\Rule;
-use Validation\Rule\Scalar\Strings\IsString;
-use Validation\ValidatorFactory;
+use Tests\LeightonThomas\Validation\DataProvider\TypeProvider;
+use Tests\LeightonThomas\Validation\Integration\Checker\CheckerTest;
 
 use function is_object;
 
@@ -94,7 +94,7 @@ class IsInstanceOfCheckerTest extends CheckerTest
 
         self::assertFalse($result->isValid());
         self::assertEquals(
-            ["This value must be an instance of Validation\ValidatorFactory."],
+            ["This value must be an instance of LeightonThomas\Validation\ValidatorFactory."],
             $result->getErrors(),
         );
     }

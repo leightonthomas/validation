@@ -19,11 +19,11 @@ Feature: Intersection Rule with no plugin
 
       declare(strict_types=1);
 
-      namespace Tests\Validation;
+      namespace Tests\LeightonThomas\Validation;
 
-      use Validation\Rule\Combination\Intersection;
-      use Validation\Rule\Object\IsInstanceOf;
-      use Validation\Rule\Scalar\Strings\IsString;
+      use LeightonThomas\Validation\Rule\Combination\Intersection;
+      use LeightonThomas\Validation\Rule\Object\IsInstanceOf;
+      use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
 
       interface Foo {}
 
@@ -41,8 +41,8 @@ Feature: Intersection Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                                      |
-      | Trace | $rule: Validation\Rule\Combination\Intersection<mixed, Tests\Validation\Foo> |
+      | Type  | Message                                                                                                    |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Combination\Intersection<mixed, Tests\LeightonThomas\Validation\Foo> |
     And I see no other errors
 
   Scenario: It will return the correct type on addition of new keys
@@ -56,8 +56,8 @@ Feature: Intersection Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                                                           |
-      | Trace | $rule: Validation\Rule\Combination\Intersection<mixed, Tests\Validation\Foo&Tests\Validation\Bar> |
+      | Type  | Message                                                                                                                                        |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Combination\Intersection<mixed, Tests\LeightonThomas\Validation\Foo&Tests\LeightonThomas\Validation\Bar> |
     And I see no other errors
 
   Scenario: It will return the correct type if nested
@@ -75,8 +75,8 @@ Feature: Intersection Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                                                                                 |
-      | Trace | $rule2: Validation\Rule\Combination\Intersection<mixed, Tests\Validation\Foo&Tests\Validation\Baz&Tests\Validation\Bar> |
+      | Type  | Message                                                                                                                                                                             |
+      | Trace | $rule2: LeightonThomas\Validation\Rule\Combination\Intersection<mixed, Tests\LeightonThomas\Validation\Foo&Tests\LeightonThomas\Validation\Baz&Tests\LeightonThomas\Validation\Bar> |
     And I see no other errors
 
   Scenario: It will return errors if non-object type used for construction
@@ -86,8 +86,8 @@ Feature: Intersection Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type            | Message                                                                                                                                                  |
-      | InvalidArgument | Argument 1 of Validation\Rule\Combination\Intersection::of expects Validation\Rule\Rule<mixed, object>, Validation\Rule\Scalar\Strings\IsString provided |
+      | Type            | Message                                                                                                                                                                                               |
+      | InvalidArgument | Argument 1 of LeightonThomas\Validation\Rule\Combination\Intersection::of expects LeightonThomas\Validation\Rule\Rule<mixed, object>, LeightonThomas\Validation\Rule\Scalar\Strings\IsString provided |
     And I see no other errors
 
   Scenario: It will return errors if non-object type used as additional rule
@@ -99,6 +99,6 @@ Feature: Intersection Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type            | Message                                                                                                                                                   |
-      | InvalidArgument | Argument 1 of Validation\Rule\Combination\Intersection::and expects Validation\Rule\Rule<mixed, object>, Validation\Rule\Scalar\Strings\IsString provided |
+      | Type            | Message                                                                                                                                                                                                |
+      | InvalidArgument | Argument 1 of LeightonThomas\Validation\Rule\Combination\Intersection::and expects LeightonThomas\Validation\Rule\Rule<mixed, object>, LeightonThomas\Validation\Rule\Scalar\Strings\IsString provided |
     And I see no other errors

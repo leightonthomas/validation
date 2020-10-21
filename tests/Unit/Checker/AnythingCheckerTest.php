@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Checker;
+namespace Tests\LeightonThomas\Validation\Unit\Checker;
 
+use LeightonThomas\Validation\Checker\AnythingChecker;
+use LeightonThomas\Validation\Rule\Anything;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\AnythingChecker;
-use Validation\Rule\Anything;
 
 class AnythingCheckerTest extends TestCase
 {

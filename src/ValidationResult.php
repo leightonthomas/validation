@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Validation;
+namespace LeightonThomas\Validation;
 
 use function array_key_exists;
 use function array_pop;
@@ -10,8 +10,6 @@ use function array_shift;
 use function count;
 use function explode;
 use function join;
-use function rtrim;
-use function var_dump;
 
 /**
  * @psalm-template T

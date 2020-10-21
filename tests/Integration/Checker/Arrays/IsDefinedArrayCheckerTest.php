@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Integration\Checker\Arrays;
+namespace Tests\LeightonThomas\Validation\Integration\Checker\Arrays;
 
-use Tests\Validation\DataProvider\TypeProvider;
-use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\AnythingChecker;
-use Validation\Checker\Arrays\IsArrayChecker;
-use Validation\Checker\Arrays\IsDefinedArrayChecker;
-use Validation\Checker\Scalar\IsScalarChecker;
-use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Arrays\IsDefinedArray;
-use Validation\Rule\Scalar\Integer\IsInteger;
-use Validation\Rule\Scalar\Strings\IsString;
+use LeightonThomas\Validation\Checker\AnythingChecker;
+use LeightonThomas\Validation\Checker\Arrays\IsArrayChecker;
+use LeightonThomas\Validation\Checker\Arrays\IsDefinedArrayChecker;
+use LeightonThomas\Validation\Checker\Scalar\IsScalarChecker;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\Arrays\IsDefinedArray;
+use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+use Tests\LeightonThomas\Validation\DataProvider\TypeProvider;
+use Tests\LeightonThomas\Validation\Integration\Checker\CheckerTest;
 
 use function is_array;
 

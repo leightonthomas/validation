@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Integration\Checker\Scalar\Numeric;
+namespace Tests\LeightonThomas\Validation\Integration\Checker\Scalar\Numeric;
 
-use Tests\Validation\DataProvider\TypeProvider;
-use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Scalar\Numeric\IsLessThanChecker;
-use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Scalar\Numeric\IsLessThan;
+use LeightonThomas\Validation\Checker\Scalar\Numeric\IsLessThanChecker;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\Scalar\Numeric\IsLessThan;
+use Tests\LeightonThomas\Validation\DataProvider\TypeProvider;
+use Tests\LeightonThomas\Validation\Integration\Checker\CheckerTest;
 
 use function is_numeric;
 

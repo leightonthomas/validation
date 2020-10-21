@@ -16,19 +16,19 @@ Without the plugin, you won't receive for full typing for certain things (e.g. o
 ```php
 <?php
 
-use Validation\Checker\Combination\ComposeChecker;
-use Validation\Checker\Combination\UnionChecker;
-use Validation\Checker\Scalar\Numeric\IsGreaterThanChecker;
-use Validation\Checker\Scalar\IsScalarChecker;
-use Validation\Checker\StrictEqualsChecker;
-use Validation\Rule\Arrays\IsDefinedArray;
-use Validation\Rule\Combination\Compose;
-use Validation\Rule\Combination\Union;
-use Validation\Rule\Scalar\Numeric\IsGreaterThan;
-use Validation\Rule\Scalar\Integer\IsInteger;
-use Validation\Rule\StrictEquals;
-use Validation\ValidatorFactory;
-use Validation\Checker\Arrays\IsDefinedArrayChecker;
+use LeightonThomas\Validation\Checker\Combination\ComposeChecker;
+use LeightonThomas\Validation\Checker\Combination\UnionChecker;
+use LeightonThomas\Validation\Checker\Scalar\Numeric\IsGreaterThanChecker;
+use LeightonThomas\Validation\Checker\Scalar\IsScalarChecker;
+use LeightonThomas\Validation\Checker\StrictEqualsChecker;
+use LeightonThomas\Validation\Rule\Arrays\IsDefinedArray;
+use LeightonThomas\Validation\Rule\Combination\Compose;
+use LeightonThomas\Validation\Rule\Combination\Union;
+use LeightonThomas\Validation\Rule\Scalar\Numeric\IsGreaterThan;
+use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+use LeightonThomas\Validation\Rule\StrictEquals;
+use LeightonThomas\Validation\ValidatorFactory;
+use LeightonThomas\Validation\Checker\Arrays\IsDefinedArrayChecker;
 
 // Set up the ValidatorFactory and register all available Checkers
 $factory = new ValidatorFactory();
@@ -79,12 +79,10 @@ if ($result->isValid()) {
 
 ## TODO
 
-* Split the plugin into a separate package, and "suggest" it in composer ?
 * Add keywords + description to composer
 * Do a pass over the checkers to make sure they still validate the correct type
     * For cases where someone is not using the static analysis features
 * Add doc-blocks that explain what Rules do and are for/what purpose they serve
-* Prefix namespace, e.g. `Validation\Rule\Rule` -> `LeightonThomas\Validation\Rule\Rule`
 * Finish off basic rules
     * Multibyte string support (?)
 * Set up Travis

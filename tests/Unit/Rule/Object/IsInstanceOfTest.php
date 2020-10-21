@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Rule\Object;
+namespace Tests\LeightonThomas\Validation\Unit\Rule\Object;
 
+use LeightonThomas\Validation\Rule\Object\IsInstanceOf;
 use PHPUnit\Framework\TestCase;
 use stdClass;
-use Validation\Rule\Object\IsInstanceOf;
 
 class IsInstanceOfTest extends TestCase
 {

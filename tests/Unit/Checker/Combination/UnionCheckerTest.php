@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Checker\Combination;
+namespace Tests\LeightonThomas\Validation\Unit\Checker\Combination;
 
+use LeightonThomas\Validation\Checker\Combination\UnionChecker;
+use LeightonThomas\Validation\Rule\Combination\Union;
+use LeightonThomas\Validation\ValidatorFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Combination\UnionChecker;
-use Validation\Rule\Combination\Union;
-use Validation\ValidatorFactory;
 
 class UnionCheckerTest extends TestCase
 {

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Validation\Checker\Scalar;
+namespace LeightonThomas\Validation\Checker\Scalar;
 
-use Validation\Checker\Checker;
-use Validation\Rule\Rule;
-use Validation\Rule\Scalar\Boolean\IsBoolean;
-use Validation\Rule\Scalar\Float\IsFloat;
-use Validation\Rule\Scalar\Integer\IsInteger;
-use Validation\Rule\Scalar\IsScalar;
-use Validation\Rule\Scalar\Strings\IsString;
-use Validation\ValidationResult;
+use LeightonThomas\Validation\Checker\Checker;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\Rule\Scalar\Boolean\IsBoolean;
+use LeightonThomas\Validation\Rule\Scalar\Float\IsFloat;
+use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+use LeightonThomas\Validation\Rule\Scalar\IsScalar;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+use LeightonThomas\Validation\ValidationResult;
 
 use function gettype;
 use function preg_replace;

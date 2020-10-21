@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Validation\Exception;
+namespace LeightonThomas\Validation\Exception;
 
 use Exception;
-use Validation\Rule\Rule;
+use LeightonThomas\Validation\Rule\Rule;
 
 class NoCheckersRegistered extends Exception
 {

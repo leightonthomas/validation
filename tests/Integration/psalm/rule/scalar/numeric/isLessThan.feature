@@ -19,9 +19,9 @@ Feature: IsLessThan Rule with no plugin
 
       declare(strict_types=1);
 
-      namespace Tests\Validation;
+      namespace Tests\LeightonThomas\Validation;
 
-      use Validation\Rule\Scalar\Numeric\IsLessThan;
+      use LeightonThomas\Validation\Rule\Scalar\Numeric\IsLessThan;
       """
 
   Scenario Outline: It will return the correct type on construction
@@ -33,8 +33,8 @@ Feature: IsLessThan Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                  |
-      | Trace | $rule: Validation\Rule\Scalar\Numeric\IsLessThan<<type>> |
+      | Type  | Message                                                                 |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Scalar\Numeric\IsLessThan<<type>> |
     And I see no other errors
 
     Examples:
@@ -51,8 +51,8 @@ Feature: IsLessThan Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type    | Message                                                                                               |
-      | <error> | Argument 1 of Validation\Rule\Scalar\Numeric\IsLessThan::__construct expects numeric, <type> provided |
+      | Type    | Message                                                                                                              |
+      | <error> | Argument 1 of LeightonThomas\Validation\Rule\Scalar\Numeric\IsLessThan::__construct expects numeric, <type> provided |
     And I see no other errors
 
     Examples:

@@ -19,11 +19,11 @@ Feature: IsDefinedArray Rule with no plugin
 
       declare(strict_types=1);
 
-      namespace Tests\Validation;
+      namespace Tests\LeightonThomas\Validation;
 
-      use Validation\Rule\Arrays\IsDefinedArray;
-      use Validation\Rule\Scalar\Strings\IsString;
-      use Validation\Rule\Scalar\Integer\IsInteger;
+      use LeightonThomas\Validation\Rule\Arrays\IsDefinedArray;
+      use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+      use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
       """
 
   Scenario: It will return a generic array type on construction
@@ -35,8 +35,8 @@ Feature: IsDefinedArray Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                               |
-      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array<array-key, mixed>> |
+      | Type  | Message                                                                              |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array<array-key, mixed>> |
     And I see no other errors
 
   Scenario: It will return a generic array type on construction of optional key
@@ -48,8 +48,8 @@ Feature: IsDefinedArray Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                               |
-      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array<array-key, mixed>> |
+      | Type  | Message                                                                              |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array<array-key, mixed>> |
     And I see no other errors
 
   Scenario: It will return a generic array type on another key being added
@@ -61,8 +61,8 @@ Feature: IsDefinedArray Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                               |
-      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array<array-key, mixed>> |
+      | Type  | Message                                                                              |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array<array-key, mixed>> |
     And I see no other errors
 
   Scenario: It will return a generic array type on an optional key being added
@@ -74,8 +74,8 @@ Feature: IsDefinedArray Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                               |
-      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array<array-key, mixed>> |
+      | Type  | Message                                                                              |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array<array-key, mixed>> |
     And I see no other errors
 
   Scenario: It will add a Psalm issue if key is not array-key
@@ -87,5 +87,5 @@ Feature: IsDefinedArray Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type            | Message                                                                                                 |
-      | InvalidArgument | Argument 1 of Validation\Rule\Arrays\IsDefinedArray::of expects array-key, array<empty, empty> provided |
+      | Type            | Message                                                                                                                |
+      | InvalidArgument | Argument 1 of LeightonThomas\Validation\Rule\Arrays\IsDefinedArray::of expects array-key, array<empty, empty> provided |

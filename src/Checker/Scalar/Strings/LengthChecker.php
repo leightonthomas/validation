@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Validation\Checker\Scalar\Strings;
+namespace LeightonThomas\Validation\Checker\Scalar\Strings;
 
-use Validation\Checker\Checker;
-use Validation\Rule\Rule;
-use Validation\Rule\Scalar\Strings\Length;
-use Validation\ValidationResult;
+use LeightonThomas\Validation\Checker\Checker;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\Rule\Scalar\Strings\Length;
+use LeightonThomas\Validation\ValidationResult;
 
 use function is_string;
 use function preg_replace;

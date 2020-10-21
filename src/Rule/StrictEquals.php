@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Validation\Rule;
+namespace LeightonThomas\Validation\Rule;
 
 /**
  * @template O

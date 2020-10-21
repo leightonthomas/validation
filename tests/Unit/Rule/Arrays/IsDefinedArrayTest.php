@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Rule\Arrays;
+namespace Tests\LeightonThomas\Validation\Unit\Rule\Arrays;
 
+use LeightonThomas\Validation\Rule\Anything;
+use LeightonThomas\Validation\Rule\Arrays\ArrayPair;
+use LeightonThomas\Validation\Rule\Arrays\IsDefinedArray;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\Rule\Scalar\Boolean\IsBoolean;
+use LeightonThomas\Validation\Rule\Scalar\Float\IsFloat;
+use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
 use PHPUnit\Framework\TestCase;
-use Validation\Rule\Anything;
-use Validation\Rule\Arrays\ArrayPair;
-use Validation\Rule\Arrays\IsDefinedArray;
-use Validation\Rule\Rule;
-use Validation\Rule\Scalar\Boolean\IsBoolean;
-use Validation\Rule\Scalar\Float\IsFloat;
-use Validation\Rule\Scalar\Integer\IsInteger;
-use Validation\Rule\Scalar\Strings\IsString;
 
 class IsDefinedArrayTest extends TestCase
 {

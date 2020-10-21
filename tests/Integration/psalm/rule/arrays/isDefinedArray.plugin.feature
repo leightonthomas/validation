@@ -13,7 +13,7 @@ Feature: IsDefinedArray Rule with the plugin
           <directory name="."/>
         </projectFiles>
         <plugins>
-          <pluginClass class="Validation\Plugin\Plugin"/>
+          <pluginClass class="LeightonThomas\Validation\Plugin\Plugin"/>
         </plugins>
       </psalm>
       """
@@ -23,13 +23,13 @@ Feature: IsDefinedArray Rule with the plugin
 
       declare(strict_types=1);
 
-      namespace Tests\Validation;
+      namespace Tests\LeightonThomas\Validation;
 
-      use Validation\Rule\Arrays\IsDefinedArray;
-      use Validation\Rule\Scalar\Strings\IsString;
-      use Validation\Rule\Scalar\Integer\IsInteger;
-      use Validation\Rule\Scalar\Boolean\IsBoolean;
-      use Validation\Rule\Combination\Union;
+      use LeightonThomas\Validation\Rule\Arrays\IsDefinedArray;
+      use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+      use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+      use LeightonThomas\Validation\Rule\Scalar\Boolean\IsBoolean;
+      use LeightonThomas\Validation\Rule\Combination\Union;
       """
 
   Scenario: It will return the correct type on construction
@@ -41,8 +41,8 @@ Feature: IsDefinedArray Rule with the plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                        |
-      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{a: string}> |
+      | Type  | Message                                                                       |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array{a: string}> |
     And I see no other errors
 
   Scenario: It will return the correct type on construction of optional key
@@ -54,8 +54,8 @@ Feature: IsDefinedArray Rule with the plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                         |
-      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{a?: string}> |
+      | Type  | Message                                                                        |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array{a?: string}> |
     And I see no other errors
 
   Scenario: It will return the correct type when more keys are added
@@ -71,8 +71,8 @@ Feature: IsDefinedArray Rule with the plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                                                                      |
-      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{4: int, a: string, another: int\|string, someKey?: bool}> |
+      | Type  | Message                                                                                                                     |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array{4: int, a: string, another: int\|string, someKey?: bool}> |
     And I see no other errors
 
   Scenario: It will return the correct type even if nested
@@ -95,8 +95,8 @@ Feature: IsDefinedArray Rule with the plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                                                        |
-      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{4: array{b: array{c?: string}}, a: string}> |
+      | Type  | Message                                                                                                       |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array{4: array{b: array{c?: string}}, a: string}> |
     And I see no other errors
 
   Scenario: It will return the correct type when duplicate keys provided
@@ -110,8 +110,8 @@ Feature: IsDefinedArray Rule with the plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                     |
-      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{a: int}> |
+      | Type  | Message                                                                    |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array{a: int}> |
     And I see no other errors
 
   Scenario: It will return the correct type when duplicate keys provided but newer one is optional
@@ -125,8 +125,8 @@ Feature: IsDefinedArray Rule with the plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                      |
-      | Trace | $rule: Validation\Rule\Arrays\IsDefinedArray<array{a?: int}> |
+      | Type  | Message                                                                     |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array{a?: int}> |
     And I see no other errors
 
   Scenario: It will return a type of array if invalid data is given
@@ -149,9 +149,9 @@ Feature: IsDefinedArray Rule with the plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type            | Message                                                                                                                         |
-      | InvalidArgument | Argument 2 of Validation\Rule\Arrays\IsDefinedArray::of expects Validation\Rule\Rule<mixed, mixed>, string(not a rule) provided |
-      | Trace           | $rule: Validation\Rule\Arrays\IsDefinedArray<array{4: array{b: array<array-key, mixed>}, a: string}>                            |
+      | Type            | Message                                                                                                                                                       |
+      | InvalidArgument | Argument 2 of LeightonThomas\Validation\Rule\Arrays\IsDefinedArray::of expects LeightonThomas\Validation\Rule\Rule<mixed, mixed>, string(not a rule) provided |
+      | Trace           | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array{4: array{b: array<array-key, mixed>}, a: string}>                                           |
     And I see no other errors
 
   Scenario: It will add a Psalm issue if key is not array-key
@@ -163,5 +163,5 @@ Feature: IsDefinedArray Rule with the plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type            | Message                                                                                                 |
-      | InvalidArgument | Argument 1 of Validation\Rule\Arrays\IsDefinedArray::of expects array-key, array<empty, empty> provided |
+      | Type            | Message                                                                                                                |
+      | InvalidArgument | Argument 1 of LeightonThomas\Validation\Rule\Arrays\IsDefinedArray::of expects array-key, array<empty, empty> provided |

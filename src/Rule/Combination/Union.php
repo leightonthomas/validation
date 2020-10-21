@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Validation\Rule\Combination;
+namespace LeightonThomas\Validation\Rule\Combination;
 
-use Validation\Rule\Rule;
+use LeightonThomas\Validation\Rule\Rule;
 
 /**
  * @see https://psalm.dev/docs/annotating_code/type_syntax/union_types/

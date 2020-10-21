@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Rule\Scalar\Strings;
+namespace Tests\LeightonThomas\Validation\Unit\Rule\Scalar\Strings;
 
 use Codeception\PHPUnit\TestCase;
 use InvalidArgumentException;
-use Validation\Rule\Scalar\Strings\Length;
+use LeightonThomas\Validation\Rule\Scalar\Strings\Length;
 
 class LengthTest extends TestCase
 {

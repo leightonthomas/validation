@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Rule;
+namespace Tests\LeightonThomas\Validation\Unit\Rule;
 
+use LeightonThomas\Validation\Rule\StrictEquals;
 use PHPUnit\Framework\TestCase;
-use Tests\Validation\DataProvider\TypeProvider;
-use Validation\Rule\StrictEquals;
+use Tests\LeightonThomas\Validation\DataProvider\TypeProvider;
 
 class StrictEqualsTest extends TestCase
 {

@@ -19,12 +19,12 @@ Feature: IsArray Rule with no plugin
 
       declare(strict_types=1);
 
-      namespace Tests\Validation;
+      namespace Tests\LeightonThomas\Validation;
 
-      use Validation\Rule\Anything;
-      use Validation\Rule\Arrays\IsArray;
-      use Validation\Rule\Scalar\Strings\IsString;
-      use Validation\Rule\Scalar\Integer\IsInteger;
+      use LeightonThomas\Validation\Rule\Anything;
+      use LeightonThomas\Validation\Rule\Arrays\IsArray;
+      use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+      use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
       """
 
   Scenario: It will cause Psalm issues if a non-array-key Rule is used for the key rule
@@ -36,8 +36,8 @@ Feature: IsArray Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type            | Message                                                                                                                                                                   |
-      | InvalidArgument | Argument 1 of Validation\Rule\Arrays\IsArray::__construct expects Validation\Rule\Rule<mixed, array-key>\|null, Validation\Rule\Arrays\IsArray<array-key, mixed> provided |
+      | Type            | Message                                                                                                                                                                                                                |
+      | InvalidArgument | Argument 1 of LeightonThomas\Validation\Rule\Arrays\IsArray::__construct expects LeightonThomas\Validation\Rule\Rule<mixed, array-key>\|null, LeightonThomas\Validation\Rule\Arrays\IsArray<array-key, mixed> provided |
 
   Scenario: It will cause no Psalm issues if valid with no custom keys and have the correct type
     Given I have the following code
@@ -48,8 +48,8 @@ Feature: IsArray Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                 |
-      | Trace | $rule: Validation\Rule\Arrays\IsArray<array-key, mixed> |
+      | Type  | Message                                                                |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsArray<array-key, mixed> |
 
   Scenario Outline: It will cause no Psalm issues if valid with custom keys and have the correct type
     Given I have the following code
@@ -60,8 +60,8 @@ Feature: IsArray Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                              |
-      | Trace | $rule: Validation\Rule\Arrays\IsArray<expectedTypes> |
+      | Type  | Message                                                             |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsArray<expectedTypes> |
 
     Examples:
       | keyRule        | valueRule      | expectedTypes                        |

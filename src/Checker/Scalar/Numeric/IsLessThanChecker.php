@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Validation\Checker\Scalar\Numeric;
+namespace LeightonThomas\Validation\Checker\Scalar\Numeric;
 
-use Validation\Checker\Checker;
-use Validation\Rule\Rule;
-use Validation\Rule\Scalar\Numeric\IsLessThan;
-use Validation\ValidationResult;
+use LeightonThomas\Validation\Checker\Checker;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\Rule\Scalar\Numeric\IsLessThan;
+use LeightonThomas\Validation\ValidationResult;
 
 use function is_numeric;
 use function preg_replace;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Validation\Rule\Scalar;
+namespace LeightonThomas\Validation\Rule\Scalar;
 
-use Validation\Rule\Rule;
+use LeightonThomas\Validation\Rule\Rule;
 
 /**
  * @template T as scalar

@@ -19,16 +19,16 @@ Feature: Validator with no plugin
 
       declare(strict_types=1);
 
-      namespace Tests\Validation;
+      namespace Tests\LeightonThomas\Validation;
 
-      use Validation\Validator;
-      use Validation\ValidationResult;
-      use Validation\Rule\Rule;
-      use Validation\Rule\Scalar\Strings\IsString;
-      use Validation\Rule\Scalar\Integer\IsInteger;
-      use Validation\Rule\Scalar\Strings\Length;
-      use Validation\Rule\Anything;
-      use Validation\Checker\Checker;
+      use LeightonThomas\Validation\Validator;
+      use LeightonThomas\Validation\ValidationResult;
+      use LeightonThomas\Validation\Rule\Rule;
+      use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+      use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+      use LeightonThomas\Validation\Rule\Scalar\Strings\Length;
+      use LeightonThomas\Validation\Rule\Anything;
+      use LeightonThomas\Validation\Checker\Checker;
 
       """
 
@@ -51,8 +51,8 @@ Feature: Validator with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                    |
-      | Trace | $validator: Validation\Validator<ruleType> |
+      | Type  | Message                                                   |
+      | Trace | $validator: LeightonThomas\Validation\Validator<ruleType> |
     And I see no other errors
 
     Examples:
@@ -80,6 +80,6 @@ Feature: Validator with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type                  | Message                                                                      |
-      | InvalidScalarArgument | Argument 1 of Validation\Validator::validate expects string, int(4) provided |
+      | Type                  | Message                                                                                     |
+      | InvalidScalarArgument | Argument 1 of LeightonThomas\Validation\Validator::validate expects string, int(4) provided |
     And I see no other errors

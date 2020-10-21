@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Integration\Checker\Scalar;
+namespace Tests\LeightonThomas\Validation\Integration\Checker\Scalar;
 
-use Tests\Validation\DataProvider\TypeProvider;
-use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Scalar\IsScalarChecker;
-use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Scalar\Boolean\IsBoolean;
-use Validation\Rule\Scalar\Float\IsFloat;
-use Validation\Rule\Scalar\Integer\IsInteger;
-use Validation\Rule\Scalar\IsScalar;
-use Validation\Rule\Scalar\Strings\IsString;
+use LeightonThomas\Validation\Checker\Scalar\IsScalarChecker;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\Scalar\Boolean\IsBoolean;
+use LeightonThomas\Validation\Rule\Scalar\Float\IsFloat;
+use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+use LeightonThomas\Validation\Rule\Scalar\IsScalar;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+use Tests\LeightonThomas\Validation\DataProvider\TypeProvider;
+use Tests\LeightonThomas\Validation\Integration\Checker\CheckerTest;
 
 use function is_bool;
 use function is_float;

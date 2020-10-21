@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit;
+namespace Tests\LeightonThomas\Validation\Unit;
 
+use LeightonThomas\Validation\Checker\Checker;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+use LeightonThomas\Validation\ValidationResult;
+use LeightonThomas\Validation\ValidatorFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Checker;
-use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Rule;
-use Validation\Rule\Scalar\Strings\IsString;
-use Validation\ValidationResult;
-use Validation\ValidatorFactory;
 
 use function get_class;
 

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Checker\Combination;
+namespace Tests\LeightonThomas\Validation\Unit\Checker\Combination;
 
+use LeightonThomas\Validation\Checker\Combination\ComposeChecker;
+use LeightonThomas\Validation\Rule\Combination\Compose;
+use LeightonThomas\Validation\ValidatorFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Combination\ComposeChecker;
-use Validation\Rule\Combination\Compose;
-use Validation\ValidatorFactory;
 
 class ComposeCheckerTest extends TestCase
 {

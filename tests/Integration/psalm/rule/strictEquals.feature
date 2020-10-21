@@ -19,9 +19,9 @@ Feature: StrictEquals Rule with no plugin
 
       declare(strict_types=1);
 
-      namespace Tests\Validation;
+      namespace Tests\LeightonThomas\Validation;
 
-      use Validation\Rule\StrictEquals;
+      use LeightonThomas\Validation\Rule\StrictEquals;
       """
 
   Scenario Outline: It will return the correct type on construction
@@ -33,8 +33,8 @@ Feature: StrictEquals Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                     |
-      | Trace | $rule: Validation\Rule\StrictEquals<<type>> |
+      | Type  | Message                                                    |
+      | Trace | $rule: LeightonThomas\Validation\Rule\StrictEquals<<type>> |
     And I see no other errors
 
     Examples:

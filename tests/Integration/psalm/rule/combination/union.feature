@@ -19,12 +19,12 @@ Feature: Union Rule with no plugin
 
       declare(strict_types=1);
 
-      namespace Tests\Validation;
+      namespace Tests\LeightonThomas\Validation;
 
-      use Validation\Rule\Combination\Union;
-      use Validation\Rule\Arrays\IsArray;
-      use Validation\Rule\Scalar\Strings\IsString;
-      use Validation\Rule\Scalar\Integer\IsInteger;
+      use LeightonThomas\Validation\Rule\Combination\Union;
+      use LeightonThomas\Validation\Rule\Arrays\IsArray;
+      use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+      use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
       """
 
   Scenario: It will return the correct type on construction
@@ -36,8 +36,8 @@ Feature: Union Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                 |
-      | Trace | $rule: Validation\Rule\Combination\Union<mixed, string> |
+      | Type  | Message                                                                |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Combination\Union<mixed, string> |
     And I see no other errors
 
   Scenario: It will return the correct type on addition of new keys
@@ -52,8 +52,8 @@ Feature: Union Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                                               |
-      | Trace | $rule: Validation\Rule\Combination\Union<mixed, array<array-key, mixed>\|int\|string> |
+      | Type  | Message                                                                                              |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Combination\Union<mixed, array<array-key, mixed>\|int\|string> |
     And I see no other errors
 
   Scenario: It will return the correct type if nested
@@ -71,6 +71,6 @@ Feature: Union Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                                                |
-      | Trace | $rule2: Validation\Rule\Combination\Union<mixed, array<array-key, mixed>\|int\|string> |
+      | Type  | Message                                                                                               |
+      | Trace | $rule2: LeightonThomas\Validation\Rule\Combination\Union<mixed, array<array-key, mixed>\|int\|string> |
     And I see no other errors

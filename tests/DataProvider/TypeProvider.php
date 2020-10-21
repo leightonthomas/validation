@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\DataProvider;
+namespace Tests\LeightonThomas\Validation\DataProvider;
 
 use stdClass;
 

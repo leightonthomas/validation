@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Rule\Scalar\Float;
+namespace Tests\LeightonThomas\Validation\Unit\Rule\Scalar\Float;
 
 use Codeception\PHPUnit\TestCase;
-use Validation\Rule\Scalar\Float\IsFloat;
-use Validation\Rule\Scalar\IsScalar;
+use LeightonThomas\Validation\Rule\Scalar\Float\IsFloat;
+use LeightonThomas\Validation\Rule\Scalar\IsScalar;
 
 class IsFloatTest extends TestCase
 {

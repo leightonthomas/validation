@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Validation\Checker\Arrays;
+namespace LeightonThomas\Validation\Checker\Arrays;
 
-use Validation\Checker\Checker;
-use Validation\Rule\Anything;
-use Validation\Rule\Arrays\IsArray;
-use Validation\Rule\Combination\Union;
-use Validation\Rule\Rule;
-use Validation\Rule\Scalar\Integer\IsInteger;
-use Validation\Rule\Scalar\Strings\IsString;
-use Validation\ValidationResult;
-use Validation\ValidatorFactory;
+use LeightonThomas\Validation\Checker\Checker;
+use LeightonThomas\Validation\Rule\Anything;
+use LeightonThomas\Validation\Rule\Arrays\IsArray;
+use LeightonThomas\Validation\Rule\Combination\Union;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+use LeightonThomas\Validation\ValidationResult;
+use LeightonThomas\Validation\ValidatorFactory;
 
 use function is_array;
 use function preg_replace;

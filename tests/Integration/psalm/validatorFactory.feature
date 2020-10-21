@@ -19,13 +19,13 @@ Feature: ValidatorFactory with no plugin
 
       declare(strict_types=1);
 
-      namespace Tests\Validation;
+      namespace Tests\LeightonThomas\Validation;
 
-      use Validation\ValidatorFactory;
-      use Validation\Rule\Scalar\Strings\IsString;
-      use Validation\Rule\Scalar\Strings\Length;
-      use Validation\Rule\Scalar\Integer\IsInteger;
-      use Validation\Rule\Anything;
+      use LeightonThomas\Validation\ValidatorFactory;
+      use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+      use LeightonThomas\Validation\Rule\Scalar\Strings\Length;
+      use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+      use LeightonThomas\Validation\Rule\Anything;
 
       $factory = new ValidatorFactory();
       """
@@ -44,8 +44,8 @@ Feature: ValidatorFactory with no plugin
     And I see no other errors
 
     Examples:
-      | rule             | message                                          |
-      | new IsString()   | $validator: Validation\Validator<mixed, string>  |
-      | new IsInteger()  | $validator: Validation\Validator<mixed, int>     |
-      | new Anything()   | $validator: Validation\Validator<mixed, mixed>   |
-      | new Length(1, 2) | $validator: Validation\Validator<string, string> |
+      | rule             | message                                                         |
+      | new IsString()   | $validator: LeightonThomas\Validation\Validator<mixed, string>  |
+      | new IsInteger()  | $validator: LeightonThomas\Validation\Validator<mixed, int>     |
+      | new Anything()   | $validator: LeightonThomas\Validation\Validator<mixed, mixed>   |
+      | new Length(1, 2) | $validator: LeightonThomas\Validation\Validator<string, string> |

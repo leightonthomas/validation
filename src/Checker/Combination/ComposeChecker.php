@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Validation\Checker\Combination;
+namespace LeightonThomas\Validation\Checker\Combination;
 
-use Validation\Checker\Checker;
-use Validation\Rule\Combination\Compose;
-use Validation\Rule\Rule;
-use Validation\ValidationResult;
-use Validation\ValidatorFactory;
+use LeightonThomas\Validation\Checker\Checker;
+use LeightonThomas\Validation\Rule\Combination\Compose;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\ValidationResult;
+use LeightonThomas\Validation\ValidatorFactory;
 
 /**
  * @implements Checker<Compose>

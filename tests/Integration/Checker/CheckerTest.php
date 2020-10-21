@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Integration\Checker;
+namespace Tests\LeightonThomas\Validation\Integration\Checker;
 
+use LeightonThomas\Validation\ValidatorFactory;
 use PHPUnit\Framework\TestCase;
-use Validation\ValidatorFactory;
 
 abstract class CheckerTest extends TestCase
 {

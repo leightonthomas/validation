@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit;
+namespace Tests\LeightonThomas\Validation\Unit;
 
+use LeightonThomas\Validation\Checker\Scalar\IsScalarChecker;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+use LeightonThomas\Validation\Validator;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Scalar\IsScalarChecker;
-use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Scalar\Strings\IsString;
-use Validation\Validator;
 
 class ValidatorTest extends TestCase
 {

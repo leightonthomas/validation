@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Rule\Scalar\Integer;
+namespace Tests\LeightonThomas\Validation\Unit\Rule\Scalar\Integer;
 
 use Codeception\PHPUnit\TestCase;
-use Validation\Rule\Scalar\Integer\IsInteger;
-use Validation\Rule\Scalar\IsScalar;
+use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+use LeightonThomas\Validation\Rule\Scalar\IsScalar;
 
 class IsIntegerTest extends TestCase
 {

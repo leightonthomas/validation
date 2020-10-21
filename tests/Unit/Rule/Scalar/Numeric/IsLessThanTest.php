@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Rule\Scalar\Numeric;
+namespace Tests\LeightonThomas\Validation\Unit\Rule\Scalar\Numeric;
 
 use Codeception\PHPUnit\TestCase;
-use Validation\Rule\Scalar\Numeric\IsLessThan;
+use LeightonThomas\Validation\Rule\Scalar\Numeric\IsLessThan;
 
 class IsLessThanTest extends TestCase
 {

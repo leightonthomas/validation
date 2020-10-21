@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Checker\Object;
+namespace Tests\LeightonThomas\Validation\Unit\Checker\Object;
 
+use LeightonThomas\Validation\Checker\Object\IsInstanceOfChecker;
+use LeightonThomas\Validation\Rule\Object\IsInstanceOf;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Object\IsInstanceOfChecker;
-use Validation\Rule\Object\IsInstanceOf;
 
 class IsInstanceOfCheckerTest extends TestCase
 {

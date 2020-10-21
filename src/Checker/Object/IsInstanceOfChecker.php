@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Validation\Checker\Object;
+namespace LeightonThomas\Validation\Checker\Object;
 
-use Validation\Checker\Checker;
-use Validation\Rule\Object\IsInstanceOf;
-use Validation\Rule\Rule;
-use Validation\ValidationResult;
+use LeightonThomas\Validation\Checker\Checker;
+use LeightonThomas\Validation\Rule\Object\IsInstanceOf;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\ValidationResult;
 
 use function is_a;
 use function is_object;

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Rule\Combination;
+namespace TestsLeightonThomas\Validation\Unit\Rule\Combination;
 
+use LeightonThomas\Validation\Rule\Combination\Union;
+use LeightonThomas\Validation\Rule\Scalar\Boolean\IsBoolean;
+use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
 use PHPUnit\Framework\TestCase;
-use Validation\Rule\Combination\Union;
-use Validation\Rule\Scalar\Boolean\IsBoolean;
-use Validation\Rule\Scalar\Integer\IsInteger;
-use Validation\Rule\Scalar\Strings\IsString;
 
 class UnionTest extends TestCase
 {

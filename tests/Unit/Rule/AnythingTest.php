@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Rule;
+namespace Tests\LeightonThomas\Validation\Unit\Rule;
 
+use LeightonThomas\Validation\Rule\Anything;
 use PHPUnit\Framework\TestCase;
-use Validation\Rule\Anything;
 
 class AnythingTest extends TestCase
 {

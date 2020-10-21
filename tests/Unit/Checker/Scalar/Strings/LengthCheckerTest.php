@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Checker\Scalar\Strings;
+namespace Tests\LeightonThomas\Validation\Unit\Checker\Scalar\Strings;
 
+use LeightonThomas\Validation\Checker\Scalar\Strings\LengthChecker;
+use LeightonThomas\Validation\Rule\Scalar\Strings\Length;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Scalar\Strings\LengthChecker;
-use Validation\Rule\Scalar\Strings\Length;
 
 class LengthCheckerTest extends TestCase
 {

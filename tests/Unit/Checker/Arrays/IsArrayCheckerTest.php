@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Checker\Arrays;
+namespace Tests\LeightonThomas\Validation\Unit\Checker\Arrays;
 
+use LeightonThomas\Validation\Checker\Arrays\IsArrayChecker;
+use LeightonThomas\Validation\Rule\Arrays\IsArray;
+use LeightonThomas\Validation\ValidatorFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Arrays\IsArrayChecker;
-use Validation\Rule\Arrays\IsArray;
-use Validation\ValidatorFactory;
 
 class IsArrayCheckerTest extends TestCase
 {

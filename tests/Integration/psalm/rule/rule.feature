@@ -19,12 +19,12 @@ Feature: Rules with no plugin
 
       declare(strict_types=1);
 
-      namespace Tests\Validation;
+      namespace Tests\LeightonThomas\Validation;
 
-      use Validation\Rule\StrictEquals;
-      use Validation\Rule\Scalar\Integer\IsInteger;
-      use Validation\Rule\Scalar\Strings\IsString;
-      use Validation\Rule\Combination\Union;
+      use LeightonThomas\Validation\Rule\StrictEquals;
+      use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+      use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+      use LeightonThomas\Validation\Rule\Combination\Union;
       """
 
   Scenario Outline: It will return the correct type when setMessage is called on a Rule
@@ -41,7 +41,7 @@ Feature: Rules with no plugin
     And I see no other errors
 
     Examples:
-      | rule                                                        | type                                                           |
-      | (new IsString())                                            | Validation\Rule\Scalar\Strings\IsString                        |
-      | (new IsInteger())                                           | Validation\Rule\Scalar\Integer\IsInteger                       |
-      | Union::of(new StrictEquals('a'))->or(new StrictEquals('b')) | Validation\Rule\Combination\Union<mixed, string(a)\|string(b)> |
+      | rule                                                        | type                                                                          |
+      | (new IsString())                                            | LeightonThomas\Validation\Rule\Scalar\Strings\IsString                        |
+      | (new IsInteger())                                           | LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger                       |
+      | Union::of(new StrictEquals('a'))->or(new StrictEquals('b')) | LeightonThomas\Validation\Rule\Combination\Union<mixed, string(a)\|string(b)> |

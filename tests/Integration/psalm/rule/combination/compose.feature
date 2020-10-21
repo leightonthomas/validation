@@ -19,13 +19,13 @@ Feature: Compose Rule with no plugin
 
       declare(strict_types=1);
 
-      namespace Tests\Validation;
+      namespace Tests\LeightonThomas\Validation;
 
-      use Validation\Rule\Rule;
-      use Validation\Rule\Combination\Compose;
-      use Validation\Rule\Scalar\Strings\IsString;
-      use Validation\Rule\Scalar\Integer\IsInteger;
-      use Validation\Rule\Arrays\IsArray;
+      use LeightonThomas\Validation\Rule\Rule;
+      use LeightonThomas\Validation\Rule\Combination\Compose;
+      use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+      use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+      use LeightonThomas\Validation\Rule\Arrays\IsArray;
       """
 
   Scenario: It will return the correct type on construction
@@ -37,8 +37,8 @@ Feature: Compose Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                   |
-      | Trace | $rule: Validation\Rule\Combination\Compose<mixed, string> |
+      | Type  | Message                                                                  |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Combination\Compose<mixed, string> |
     And I see no other errors
 
   Scenario: It will return the correct type on addition of rules
@@ -53,8 +53,8 @@ Feature: Compose Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                                    |
-      | Trace | $rule: Validation\Rule\Combination\Compose<mixed, array<array-key, mixed>> |
+      | Type  | Message                                                                                   |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Combination\Compose<mixed, array<array-key, mixed>> |
     And I see no other errors
 
   Scenario: It will return the correct type if nested
@@ -72,8 +72,8 @@ Feature: Compose Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type  | Message                                                                     |
-      | Trace | $rule2: Validation\Rule\Combination\Compose<mixed, array<array-key, mixed>> |
+      | Type  | Message                                                                                    |
+      | Trace | $rule2: LeightonThomas\Validation\Rule\Combination\Compose<mixed, array<array-key, mixed>> |
     And I see no other errors
 
   Scenario: It will add Psalm issue if input type of new rule doesn't match output type of previous
@@ -95,6 +95,6 @@ Feature: Compose Rule with no plugin
       """
     When I run Psalm
     Then I see these errors
-      | Type                  | Message                                                                                                                                     |
-      | InvalidScalarArgument | Argument 1 of Validation\Rule\Combination\Compose::and expects Validation\Rule\Rule<string, mixed>, Tests\Validation\SomeOtherRule provided |
+      | Type                  | Message                                                                                                                                                                                  |
+      | InvalidScalarArgument | Argument 1 of LeightonThomas\Validation\Rule\Combination\Compose::and expects LeightonThomas\Validation\Rule\Rule<string, mixed>, Tests\LeightonThomas\Validation\SomeOtherRule provided |
     And I see no other errors

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Checker;
+namespace Tests\LeightonThomas\Validation\Unit\Checker;
 
+use LeightonThomas\Validation\Checker\StrictEqualsChecker;
+use LeightonThomas\Validation\Rule\StrictEquals;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\StrictEqualsChecker;
-use Validation\Rule\StrictEquals;
 
 class StrictEqualsCheckerTest extends TestCase
 {

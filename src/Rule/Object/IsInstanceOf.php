@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Validation\Rule\Object;
+namespace LeightonThomas\Validation\Rule\Object;
 
-use Validation\Rule\Rule;
+use LeightonThomas\Validation\Rule\Rule;
 
 /**
  * @template I of object

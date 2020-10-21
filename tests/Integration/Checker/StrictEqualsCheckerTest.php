@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Integration\Checker;
+namespace Tests\LeightonThomas\Validation\Integration\Checker;
 
+use LeightonThomas\Validation\Checker\StrictEqualsChecker;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\StrictEquals;
 use stdClass;
-use Tests\Validation\DataProvider\TypeProvider;
-use Validation\Checker\StrictEqualsChecker;
-use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\StrictEquals;
+use Tests\LeightonThomas\Validation\DataProvider\TypeProvider;
 
 class StrictEqualsCheckerTest extends CheckerTest
 {

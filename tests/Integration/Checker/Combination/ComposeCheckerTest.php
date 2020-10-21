@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Integration\Checker\Combination;
+namespace Tests\LeightonThomas\Validation\Integration\Checker\Combination;
 
-use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Combination\ComposeChecker;
-use Validation\Checker\Scalar\IsScalarChecker;
-use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Combination\Compose;
-use Validation\Rule\Scalar\Integer\IsInteger;
-use Validation\Rule\Scalar\Strings\IsString;
+use LeightonThomas\Validation\Checker\Combination\ComposeChecker;
+use LeightonThomas\Validation\Checker\Scalar\IsScalarChecker;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\Combination\Compose;
+use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+use Tests\LeightonThomas\Validation\Integration\Checker\CheckerTest;
 
 class ComposeCheckerTest extends CheckerTest
 {

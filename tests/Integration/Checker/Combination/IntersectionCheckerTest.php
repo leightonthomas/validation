@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Integration\Checker\Combination;
+namespace Tests\LeightonThomas\Validation\Integration\Checker\Combination;
 
+use LeightonThomas\Validation\Checker\Arrays\IsArrayChecker;
+use LeightonThomas\Validation\Checker\Checker;
+use LeightonThomas\Validation\Checker\Combination\IntersectionChecker;
+use LeightonThomas\Validation\Checker\Object\IsInstanceOfChecker;
+use LeightonThomas\Validation\Checker\Scalar\IsScalarChecker;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\Combination\Intersection;
+use LeightonThomas\Validation\Rule\Object\IsInstanceOf;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\ValidatorFactory;
 use stdClass;
-use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Arrays\IsArrayChecker;
-use Validation\Checker\Checker;
-use Validation\Checker\Combination\IntersectionChecker;
-use Validation\Checker\Object\IsInstanceOfChecker;
-use Validation\Checker\Scalar\IsScalarChecker;
-use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Combination\Intersection;
-use Validation\Rule\Object\IsInstanceOf;
-use Validation\Rule\Rule;
-use Validation\ValidatorFactory;
+use Tests\LeightonThomas\Validation\Integration\Checker\CheckerTest;
 
 class IntersectionCheckerTest extends CheckerTest
 {
@@ -43,7 +43,7 @@ class IntersectionCheckerTest extends CheckerTest
 
         self::assertFalse($result->isValid());
         self::assertEquals(
-            ['This value must be an instance of Validation\ValidatorFactory.'],
+            ['This value must be an instance of LeightonThomas\Validation\ValidatorFactory.'],
             $result->getErrors(),
         );
     }
@@ -65,8 +65,8 @@ class IntersectionCheckerTest extends CheckerTest
         self::assertFalse($result->isValid());
         self::assertEquals(
             [
-                'This value must be an instance of Validation\Rule\Rule.',
-                'This value must be an instance of Validation\Checker\Checker.',
+                'This value must be an instance of LeightonThomas\Validation\Rule\Rule.',
+                'This value must be an instance of LeightonThomas\Validation\Checker\Checker.',
             ],
             $result->getErrors(),
         );

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Checker\Scalar;
+namespace Tests\LeightonThomas\Validation\Unit\Checker\Scalar;
 
+use LeightonThomas\Validation\Checker\Scalar\IsScalarChecker;
+use LeightonThomas\Validation\Rule\Scalar\Boolean\IsBoolean;
+use LeightonThomas\Validation\Rule\Scalar\Float\IsFloat;
+use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Scalar\IsScalarChecker;
-use Validation\Rule\Scalar\Boolean\IsBoolean;
-use Validation\Rule\Scalar\Float\IsFloat;
-use Validation\Rule\Scalar\Integer\IsInteger;
-use Validation\Rule\Scalar\Strings\IsString;
 
 class IsScalarCheckerTest extends TestCase
 {

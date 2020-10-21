@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Validation;
+namespace LeightonThomas\Validation;
 
-use Validation\Rule\Rule;
-use Validation\Checker\Checker;
-use Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Checker\Checker;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\Rule;
 
 /**
  * @psalm-template I

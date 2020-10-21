@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Validation\Checker\Arrays;
+namespace LeightonThomas\Validation\Checker\Arrays;
 
-use Validation\Checker\Checker;
-use Validation\Rule\Arrays\IsDefinedArray;
-use Validation\Rule\Rule;
-use Validation\ValidationResult;
-use Validation\ValidatorFactory;
+use LeightonThomas\Validation\Checker\Checker;
+use LeightonThomas\Validation\Rule\Arrays\IsDefinedArray;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\ValidationResult;
+use LeightonThomas\Validation\ValidatorFactory;
 
 use function array_key_exists;
 use function is_array;

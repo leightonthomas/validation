@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Rule\Scalar\Boolean;
+namespace Tests\LeightonThomas\Validation\Unit\Rule\Scalar\Boolean;
 
 use Codeception\PHPUnit\TestCase;
-use Validation\Rule\Scalar\Boolean\IsBoolean;
-use Validation\Rule\Scalar\IsScalar;
+use LeightonThomas\Validation\Rule\Scalar\Boolean\IsBoolean;
+use LeightonThomas\Validation\Rule\Scalar\IsScalar;
 
 class IsBooleanTest extends TestCase
 {

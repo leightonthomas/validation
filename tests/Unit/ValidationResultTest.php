@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit;
+namespace Tests\LeightonThomas\Validation\Unit;
 
-use Validation\ValidationResult;
+use LeightonThomas\Validation\ValidationResult;
 use PHPUnit\Framework\TestCase;
 
 class ValidationResultTest extends TestCase

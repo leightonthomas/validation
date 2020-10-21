@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Integration\Checker\Scalar\Strings;
+namespace Tests\LeightonThomas\Validation\Integration\Checker\Scalar\Strings;
 
-use Tests\Validation\DataProvider\TypeProvider;
-use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Scalar\Strings\LengthChecker;
-use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Scalar\Strings\Length;
+use LeightonThomas\Validation\Checker\Scalar\Strings\LengthChecker;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\Scalar\Strings\Length;
+use Tests\LeightonThomas\Validation\DataProvider\TypeProvider;
+use Tests\LeightonThomas\Validation\Integration\Checker\CheckerTest;
 
 use function is_string;
 

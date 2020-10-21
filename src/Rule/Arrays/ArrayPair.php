@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Validation\Rule\Arrays;
+namespace LeightonThomas\Validation\Rule\Arrays;
 
-use Validation\Rule\Rule;
+use LeightonThomas\Validation\Rule\Rule;
 
 /**
  * @internal

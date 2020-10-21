@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Validation\Checker;
+namespace LeightonThomas\Validation\Checker;
 
-use Validation\Rule\Rule;
-use Validation\Exception\NoCheckersRegistered;
-use Validation\ValidationResult;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\ValidationResult;
 
 /**
  * @template T of Rule<mixed, mixed>

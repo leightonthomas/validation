@@ -1,6 +1,6 @@
 {
     "name": "leightonthomas/validation",
-    "type": "library",
+    "type": "psalm-plugin",
     "license": "MIT",
     "authors": [
         {
@@ -11,13 +11,13 @@
     "autoload": {
         "exclude-from-classmap": ["src/Plugin"],
         "psr-4": {
-            "Validation\\": "src/"
+            "LeightonThomas\\Validation\\": "src/"
         }
     },
     "autoload-dev": {
         "classmap": ["src/Plugin"],
         "psr-4": {
-            "Tests\\Validation\\": "tests/"
+            "Tests\\LeightonThomas\\Validation\\": "tests/"
         }
     },
     "description": "Type safe validation library.",
@@ -27,6 +27,11 @@
         "psalm/plugin-phpunit": "^0.12.2",
         "weirdan/codeception-psalm-module": "^0.9.1",
         "squizlabs/php_codesniffer": "^3.5"
+    },
+    "extra": {
+        "psalm": {
+            "pluginClass": "LeightonThomas\\Validation\\Plugin\\Plugin"
+        }
     },
     "scripts": {
         "phpcs-fix": "vendor/bin/phpcbf --standard=PSR12 src/"

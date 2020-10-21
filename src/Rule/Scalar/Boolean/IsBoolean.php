@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Validation\Rule\Scalar\Boolean;
+namespace LeightonThomas\Validation\Rule\Scalar\Boolean;
 
-use Validation\Rule\Scalar\IsScalar;
+use LeightonThomas\Validation\Rule\Scalar\IsScalar;
 
 /**
  * @extends IsScalar<bool>

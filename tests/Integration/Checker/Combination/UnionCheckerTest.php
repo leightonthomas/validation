@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Integration\Checker\Combination;
+namespace Tests\LeightonThomas\Validation\Integration\Checker\Combination;
 
-use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Arrays\IsArrayChecker;
-use Validation\Checker\Combination\UnionChecker;
-use Validation\Checker\Scalar\IsScalarChecker;
-use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Combination\Union;
-use Validation\Rule\Scalar\Boolean\IsBoolean;
-use Validation\Rule\Scalar\Integer\IsInteger;
-use Validation\Rule\Scalar\Strings\IsString;
+use LeightonThomas\Validation\Checker\Arrays\IsArrayChecker;
+use LeightonThomas\Validation\Checker\Combination\UnionChecker;
+use LeightonThomas\Validation\Checker\Scalar\IsScalarChecker;
+use LeightonThomas\Validation\Exception\NoCheckersRegistered;
+use LeightonThomas\Validation\Rule\Combination\Union;
+use LeightonThomas\Validation\Rule\Scalar\Boolean\IsBoolean;
+use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
+use Tests\LeightonThomas\Validation\Integration\Checker\CheckerTest;
 
 class UnionCheckerTest extends CheckerTest
 {

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Checker\Combination;
+namespace Tests\LeightonThomas\Validation\Unit\Checker\Combination;
 
+use LeightonThomas\Validation\Checker\Combination\IntersectionChecker;
+use LeightonThomas\Validation\Rule\Combination\Intersection;
+use LeightonThomas\Validation\ValidatorFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Combination\IntersectionChecker;
-use Validation\Rule\Combination\Intersection;
-use Validation\ValidatorFactory;
 
 class IntersectionCheckerTest extends TestCase
 {

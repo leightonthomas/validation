@@ -1,4 +1,4 @@
-namespace: Tests\Validation\Integration
+namespace: Tests\LeightonThomas\Validation\Integration
 paths:
   tests: tests/Integration
   output: tests/Integration/_output

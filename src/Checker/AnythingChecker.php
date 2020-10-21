@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Validation\Checker;
+namespace LeightonThomas\Validation\Checker;
 
-use Validation\Rule\Anything;
-use Validation\Rule\Rule;
-use Validation\ValidationResult;
+use LeightonThomas\Validation\Rule\Anything;
+use LeightonThomas\Validation\Rule\Rule;
+use LeightonThomas\Validation\ValidationResult;
 
 /**
  * @implements Checker<Anything>
