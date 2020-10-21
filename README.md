@@ -84,7 +84,6 @@ if ($result->isValid()) {
 * Add doc-blocks that explain what Rules do and are for/what purpose they serve
 * Prefix namespace, e.g. `Validation\Rule\Rule` -> `LeightonThomas\Validation\Rule\Rule`
 * Finish off basic rules
-    * Optional keys for IsDefinedArray
     * Multibyte string support
 * Set up Travis
 * Write some examples
