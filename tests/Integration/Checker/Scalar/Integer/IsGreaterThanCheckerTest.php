@@ -11,7 +11,6 @@ use Validation\Exception\NoCheckersRegistered;
 use Validation\Rule\Scalar\Integer\IsGreaterThan;
 
 use function is_int;
-use function range;
 
 class IsGreaterThanCheckerTest extends CheckerTest
 {
@@ -204,7 +203,7 @@ class IsGreaterThanCheckerTest extends CheckerTest
 
     public function tooSmallProvider(): iterable
     {
-        foreach (range(-100, 99) as $value) {
+        foreach ([-100, -50, -0, 0, 25, 50, 90, 99] as $value) {
             yield [$value];
         }
     }

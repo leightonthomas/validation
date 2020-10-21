@@ -7,6 +7,8 @@ namespace Validation\Rule\Scalar\Integer;
 use Validation\Rule\Rule;
 
 /**
+ * TODO move to numeric
+ *
  * @extends Rule<int, int>
  */
 class IsGreaterThan extends Rule
