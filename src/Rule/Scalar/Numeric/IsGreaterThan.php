@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Validation\Rule\Scalar\Integer;
+namespace Validation\Rule\Scalar\Numeric;
 
 use Validation\Rule\Rule;
 
 /**
- * TODO move to numeric
+ * @template T of numeric
  *
- * @extends Rule<int, int>
+ * @extends Rule<T, T>
  */
 class IsGreaterThan extends Rule
 {
@@ -17,13 +17,22 @@ class IsGreaterThan extends Rule
     public const ERR_LESS_THAN = 0;
     public const ERR_IS_EQUAL = 1;
     public const ERR_LESS_THAN_OR_EQUAL = 2;
-    public const ERR_NOT_INTEGER = 3;
+    public const ERR_NOT_NUMERIC = 3;
 
-    private int $value;
+    /**
+     * @var float|int|string
+     * @psalm-var numeric
+     */
+    private $value;
 
     private bool $orEqual;
 
-    public function __construct(int $value)
+    /**
+     * @param int|float|string $value
+     *
+     * @psalm-param T $value
+     */
+    public function __construct($value)
     {
         $this->value = $value;
         $this->orEqual = false;
@@ -31,7 +40,7 @@ class IsGreaterThan extends Rule
             self::ERR_LESS_THAN => 'This value must be greater than {{ value }}.',
             self::ERR_IS_EQUAL => 'This value must be greater than {{ value }}.',
             self::ERR_LESS_THAN_OR_EQUAL => 'This value must be greater than or equal to {{ value }}.',
-            self::ERR_NOT_INTEGER => 'This value must be an integer.',
+            self::ERR_NOT_NUMERIC => 'This value must be numeric.',
         ];
     }
 
@@ -42,7 +51,11 @@ class IsGreaterThan extends Rule
         return $this;
     }
 
-    public function getValue(): int
+    /**
+     * @return float|int|string
+     * @psalm-return numeric
+     */
+    public function getValue()
     {
         return $this->value;
     }

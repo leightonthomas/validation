@@ -6,20 +6,20 @@ namespace Tests\Validation\Integration\Checker\Scalar\Numeric;
 
 use Tests\Validation\DataProvider\TypeProvider;
 use Tests\Validation\Integration\Checker\CheckerTest;
-use Validation\Checker\Scalar\Numeric\IsLessThanChecker;
+use Validation\Checker\Scalar\Numeric\IsGreaterThanChecker;
 use Validation\Exception\NoCheckersRegistered;
-use Validation\Rule\Scalar\Numeric\IsLessThan;
+use Validation\Rule\Scalar\Numeric\IsGreaterThan;
 
 use function is_numeric;
 
-class IsLessThanCheckerTest extends CheckerTest
+class IsGreaterThanCheckerTest extends CheckerTest
 {
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->factory->register(new IsLessThanChecker());
+        $this->factory->register(new IsGreaterThanChecker());
     }
 
     /**
@@ -36,7 +36,7 @@ class IsLessThanCheckerTest extends CheckerTest
      */
     public function itWillAddAnErrorIfNotNumeric($value, $comparisonValue): void
     {
-        $rule = new IsLessThan($comparisonValue);
+        $rule = new IsGreaterThan($comparisonValue);
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -61,8 +61,8 @@ class IsLessThanCheckerTest extends CheckerTest
      */
     public function itWillAddCustomErrorIfNotAStringAndConfigured($value, $comparisonValue): void
     {
-        $rule = new IsLessThan($comparisonValue);
-        $rule->setMessage(IsLessThan::ERR_NOT_NUMERIC, 'my msg');
+        $rule = new IsGreaterThan($comparisonValue);
+        $rule->setMessage(IsGreaterThan::ERR_NOT_NUMERIC, 'my msg');
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -90,7 +90,7 @@ class IsLessThanCheckerTest extends CheckerTest
 
     /**
      * @test
-     * @dataProvider tooBigProvider
+     * @dataProvider tooSmallProvider
      *
      * @param int|float|string $value
      * @param int|float|string $comparisonValue
@@ -100,22 +100,22 @@ class IsLessThanCheckerTest extends CheckerTest
      *
      * @throws NoCheckersRegistered
      */
-    public function itWillAddErrorIfTooBig($value, $comparisonValue): void
+    public function itWillAddErrorIfTooSmall($value, $comparisonValue): void
     {
-        $rule = new IsLessThan($comparisonValue);
+        $rule = new IsGreaterThan($comparisonValue);
 
         $result = $this->factory->create($rule)->validate($value);
 
         self::assertFalse($result->isValid());
         self::assertEquals(
-            ["This value must be less than {$comparisonValue}."],
+            ["This value must be greater than {$comparisonValue}."],
             $result->getErrors(),
         );
     }
 
     /**
      * @test
-     * @dataProvider tooBigProvider
+     * @dataProvider tooSmallProvider
      *
      * @param int|float|string $value
      * @param int|float|string $comparisonValue
@@ -125,10 +125,10 @@ class IsLessThanCheckerTest extends CheckerTest
      *
      * @throws NoCheckersRegistered
      */
-    public function itWillAddCustomerErrorIfConfiguredAndTooBig($value, $comparisonValue): void
+    public function itWillAddCustomerErrorIfConfiguredAndTooSmall($value, $comparisonValue): void
     {
-        $rule = new IsLessThan($comparisonValue);
-        $rule->setMessage(IsLessThan::ERR_GREATER_THAN, 'my msg');
+        $rule = new IsGreaterThan($comparisonValue);
+        $rule->setMessage(IsGreaterThan::ERR_LESS_THAN, 'my msg');
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -153,13 +153,13 @@ class IsLessThanCheckerTest extends CheckerTest
      */
     public function itWillAddErrorIfEqualToValueAndNotAllowedToBeEqual($value, $comparisonValue): void
     {
-        $rule = new IsLessThan($comparisonValue);
+        $rule = new IsGreaterThan($comparisonValue);
 
         $result = $this->factory->create($rule)->validate($value);
 
         self::assertFalse($result->isValid());
         self::assertEquals(
-            ["This value must be less than {$comparisonValue}."],
+            ["This value must be greater than {$comparisonValue}."],
             $result->getErrors(),
         );
     }
@@ -178,8 +178,8 @@ class IsLessThanCheckerTest extends CheckerTest
      */
     public function itWillAddCustomErrorIfConfiguredIfEqualToValueAndNotAllowedToBeEqual($value, $comparisonValue): void
     {
-        $rule = new IsLessThan($comparisonValue);
-        $rule->setMessage(IsLessThan::ERR_IS_EQUAL, 'my msg');
+        $rule = new IsGreaterThan($comparisonValue);
+        $rule->setMessage(IsGreaterThan::ERR_IS_EQUAL, 'my msg');
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -203,7 +203,7 @@ class IsLessThanCheckerTest extends CheckerTest
 
     /**
      * @test
-     * @dataProvider tooBigProvider
+     * @dataProvider tooSmallProvider
      *
      * @param int|float|string $value
      * @param int|float|string $comparisonValue
@@ -213,23 +213,23 @@ class IsLessThanCheckerTest extends CheckerTest
      *
      * @throws NoCheckersRegistered
      */
-    public function itWillAddErrorIfTooBigAndEqualIsAllowed($value, $comparisonValue): void
+    public function itWillAddErrorIfTooSmallAndEqualIsAllowed($value, $comparisonValue): void
     {
-        $rule = new IsLessThan($comparisonValue);
+        $rule = new IsGreaterThan($comparisonValue);
         $rule->allowEqual();
 
         $result = $this->factory->create($rule)->validate($value);
 
         self::assertFalse($result->isValid());
         self::assertEquals(
-            ["This value must be less than or equal to {$comparisonValue}."],
+            ["This value must be greater than or equal to {$comparisonValue}."],
             $result->getErrors(),
         );
     }
 
     /**
      * @test
-     * @dataProvider tooBigProvider
+     * @dataProvider tooSmallProvider
      *
      * @param int|float|string $value
      * @param int|float|string $comparisonValue
@@ -239,11 +239,11 @@ class IsLessThanCheckerTest extends CheckerTest
      *
      * @throws NoCheckersRegistered
      */
-    public function itWillAddCustomerErrorIfConfiguredAndTooBigAndEqualIsAllowed($value, $comparisonValue): void
+    public function itWillAddCustomerErrorIfConfiguredAndTooSmallAndEqualIsAllowed($value, $comparisonValue): void
     {
-        $rule = new IsLessThan($comparisonValue);
+        $rule = new IsGreaterThan($comparisonValue);
         $rule->allowEqual();
-        $rule->setMessage(IsLessThan::ERR_GREATER_THAN_OR_EQUAL, 'my msg');
+        $rule->setMessage(IsGreaterThan::ERR_LESS_THAN_OR_EQUAL, 'my msg');
 
         $result = $this->factory->create($rule)->validate($value);
 
@@ -254,7 +254,7 @@ class IsLessThanCheckerTest extends CheckerTest
         );
     }
 
-    public function tooBigProvider(): iterable
+    public function tooSmallProvider(): iterable
     {
         $transformations = [
             'int' => fn(int $i): int => $i,
@@ -263,9 +263,9 @@ class IsLessThanCheckerTest extends CheckerTest
             'float' => fn(int $i): float => (float) $i,
         ];
 
-        $comparisonValues = [5, 5.0, '5', '5.0'];
+        $comparisonValues = [100, 100.0, '100', '100.0'];
 
-        foreach ([6, 10, 25, 100] as $value) {
+        foreach ([-100, -50, 0, -0, 10, 50, 99] as $value) {
             foreach ($comparisonValues as $comparisonValue) {
                 foreach ($transformations as $resultType => $transformation) {
                     yield [$transformation($value), $comparisonValue];

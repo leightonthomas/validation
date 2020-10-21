@@ -87,16 +87,6 @@ Feature: Compose Rule with no plugin
           {
               $this->messages = [];
           }
-
-          public function getMessages(): array
-          {
-              return [];
-          }
-
-          public function setMessage(int $type, string $newMessage): self
-          {
-              return $this;
-          }
       }
 
       Compose::from(new IsString())

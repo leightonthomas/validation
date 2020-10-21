@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Checker\Scalar\Integer;
+namespace Tests\Validation\Unit\Checker\Scalar\Numeric;
 
 use PHPUnit\Framework\TestCase;
-use Validation\Checker\Scalar\Integer\IsGreaterThanChecker;
-use Validation\Rule\Scalar\Integer\IsGreaterThan;
+use Validation\Checker\Scalar\Numeric\IsGreaterThanChecker;
+use Validation\Rule\Scalar\Numeric\IsGreaterThan;
 
 class IsGreaterThanCheckerTest extends TestCase
 {

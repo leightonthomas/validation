@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Validation\Unit\Rule\Scalar\Integer;
+namespace Tests\Validation\Unit\Rule\Scalar\Numeric;
 
 use Codeception\PHPUnit\TestCase;
-use Validation\Rule\Scalar\Integer\IsGreaterThan;
+use Validation\Rule\Scalar\Numeric\IsGreaterThan;
 
 class IsGreaterThanTest extends TestCase
 {
@@ -24,7 +24,7 @@ class IsGreaterThanTest extends TestCase
                 IsGreaterThan::ERR_LESS_THAN => 'This value must be greater than {{ value }}.',
                 IsGreaterThan::ERR_IS_EQUAL => 'This value must be greater than {{ value }}.',
                 IsGreaterThan::ERR_LESS_THAN_OR_EQUAL => 'This value must be greater than or equal to {{ value }}.',
-                IsGreaterThan::ERR_NOT_INTEGER => 'This value must be an integer.',
+                IsGreaterThan::ERR_NOT_NUMERIC => 'This value must be numeric.',
             ],
             $instance->getMessages(),
         );
@@ -43,7 +43,7 @@ class IsGreaterThanTest extends TestCase
                 IsGreaterThan::ERR_LESS_THAN => 'This value must be greater than {{ value }}.',
                 IsGreaterThan::ERR_IS_EQUAL => 'my new msg',
                 IsGreaterThan::ERR_LESS_THAN_OR_EQUAL => 'This value must be greater than or equal to {{ value }}.',
-                IsGreaterThan::ERR_NOT_INTEGER => 'This value must be an integer.',
+                IsGreaterThan::ERR_NOT_NUMERIC => 'This value must be numeric.',
             ],
             $instance->getMessages(),
         );

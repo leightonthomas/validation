@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Validation\Checker\Scalar\Integer;
+namespace Validation\Checker\Scalar\Numeric;
 
 use Validation\Checker\Checker;
 use Validation\Rule\Rule;
-use Validation\Rule\Scalar\Integer\IsGreaterThan;
+use Validation\Rule\Scalar\Numeric\IsGreaterThan;
 use Validation\ValidationResult;
 
-use function is_int;
+use function is_numeric;
 use function preg_replace;
 
 /**
@@ -28,8 +28,8 @@ class IsGreaterThanChecker implements Checker
         Rule $rule,
         ValidationResult $result
     ): void {
-        if (! is_int($value)) {
-            $result->addError($rule->getMessages()[IsGreaterThan::ERR_NOT_INTEGER]);
+        if (! is_numeric($value)) {
+            $result->addError($rule->getMessages()[IsGreaterThan::ERR_NOT_NUMERIC]);
 
             return;
         }

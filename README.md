@@ -18,13 +18,13 @@ Without the plugin, you won't receive for full typing for certain things (e.g. o
 
 use Validation\Checker\Combination\ComposeChecker;
 use Validation\Checker\Combination\UnionChecker;
-use Validation\Checker\Scalar\Integer\IsGreaterThanChecker;
+use Validation\Checker\Scalar\Numeric\IsGreaterThanChecker;
 use Validation\Checker\Scalar\IsScalarChecker;
 use Validation\Checker\StrictEqualsChecker;
 use Validation\Rule\Arrays\IsDefinedArray;
 use Validation\Rule\Combination\Compose;
 use Validation\Rule\Combination\Union;
-use Validation\Rule\Scalar\Integer\IsGreaterThan;
+use Validation\Rule\Scalar\Numeric\IsGreaterThan;
 use Validation\Rule\Scalar\Integer\IsInteger;
 use Validation\Rule\StrictEquals;
 use Validation\ValidatorFactory;
@@ -83,7 +83,6 @@ if ($result->isValid()) {
     * For cases where someone is not using the static analysis features
 * Add doc-blocks that explain what they do and are for
 * Finish off basic rules
-    * LessThan (int)
     * Optional keys for IsDefinedArray
     * Multibyte string support
 * Set up Travis
