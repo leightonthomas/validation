@@ -79,6 +79,8 @@ if ($result->isValid()) {
 
 ## TODO
 
+* Split the plugin into a separate package, and "suggest" it in composer ?
+* Add keywords + description to composer
 * Do a pass over the checkers to make sure they still validate the correct type
     * For cases where someone is not using the static analysis features
 * Add doc-blocks that explain what Rules do and are for/what purpose they serve
