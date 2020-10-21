@@ -59,7 +59,7 @@ $validator = $factory->create($myRule);
 $result = $validator->validate([]);
 
 if ($result->isValid()) {
-    // This will be typed as array{currency: string(GBP)|string(USD), amount: int}
+    // This will be typed as array{amount: int, currency: string(GBP)|string(USD)}
     $outputValue = $result->getValue();
 } else {
     /**

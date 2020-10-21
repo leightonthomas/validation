@@ -32,7 +32,7 @@ abstract class Rule
      * @param string $newMessage
      *
      * @return self
-     * @psalm-return self<I, O>
+     * @psalm-return $this
      */
     public function setMessage(int $type, string $newMessage): self
     {

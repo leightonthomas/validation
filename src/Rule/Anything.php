@@ -17,11 +17,6 @@ class Anything extends Rule
 
     public function getMessages(): array
     {
-        return $this->messages;
-    }
-
-    public function setMessage(int $type, string $newMessage): self
-    {
-        return $this;
+        return [];
     }
 }
