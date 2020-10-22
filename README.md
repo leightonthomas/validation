@@ -84,14 +84,9 @@ if ($result->isValid()) {
 }
 ```
 
-## TODO
+## Roadmap
 
-* Symfony bundle for automatic checker creation
 * Finish off basic rules
     * Add ability to disallow other keys on `IsDefinedArray`
-    * Multibyte string support (?)
-* Set up Travis
-* Write some examples
-* Add readme section about why, problems it solves
+* Symfony bundle for automatic checker creation
 * Investigate PHPStan support
-* Do a Psalm pass over the tests, get that Psalm'd up
