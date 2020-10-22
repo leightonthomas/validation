@@ -94,7 +94,5 @@ if ($result->isValid()) {
 * Set up Travis
 * Write some examples
 * Add readme section about why, problems it solves
-* Test project by requiring on another one and installing plugin - does it work correctly?
-    * Write up some validators for known API routes, see if any issues arise
 * Investigate PHPStan support
 * Do a Psalm pass over the tests, get that Psalm'd up
