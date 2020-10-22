@@ -7,6 +7,10 @@ namespace LeightonThomas\Validation\Rule\Combination;
 use LeightonThomas\Validation\Rule\Rule;
 
 /**
+ * Compose rules together to create a new rule that performs validation of all rules in sequence.
+ * For example, if you compose Rule<mixed, int> and Rule<int, positive-int>, the result will be a
+ * Rule<mixed, positive-int> and validate from mixed -> int -> positive-int.
+ *
  * @psalm-template I
  * @psalm-template MyO
  *

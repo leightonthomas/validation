@@ -7,6 +7,11 @@ namespace LeightonThomas\Validation\Rule\Combination;
 use LeightonThomas\Validation\Rule\Rule;
 
 /**
+ * This rule reflects Psalm's intersection types, but due to limitations only works with objects at the moment.
+ * For example, the intersection of Rule<mixed, Foo> and Rule<mixed, Bar> would be Rule<mixed, Foo&Bar>.
+ *
+ * @see https://psalm.dev/docs/annotating_code/type_syntax/intersection_types/
+ *
  * @template I
  * @template O of object
  *

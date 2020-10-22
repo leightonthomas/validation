@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace LeightonThomas\Validation\Rule;
 
 /**
+ * Check if the input === the provided value (which can be anything).
+ *
  * @template O
  *
  * @extends Rule<mixed, O>

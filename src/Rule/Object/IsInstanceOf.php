@@ -7,6 +7,8 @@ namespace LeightonThomas\Validation\Rule\Object;
 use LeightonThomas\Validation\Rule\Rule;
 
 /**
+ * Check if the given object is an instance of some class/interface.
+ *
  * @template I of object
  * @template O of object
  *

@@ -7,6 +7,9 @@ namespace LeightonThomas\Validation\Rule\Combination;
 use LeightonThomas\Validation\Rule\Rule;
 
 /**
+ * This rule reflects Psalm's union types.
+ * For example, the union of Rule<mixed, Foo> and Rule<mixed, Bar> would be Rule<mixed, Foo|Bar>.
+ *
  * @see https://psalm.dev/docs/annotating_code/type_syntax/union_types/
  *
  * @psalm-template I

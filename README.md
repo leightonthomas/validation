@@ -87,11 +87,9 @@ if ($result->isValid()) {
 ## TODO
 
 * Symfony bundle for automatic checker creation
-* Do a pass over the checkers to make sure they still validate the correct type
-    * For cases where someone is not using the static analysis features
-* Add doc-blocks that explain what Rules do and are for/what purpose they serve
 * Finish off basic rules
     * Callback
+    * Add ability to disallow other keys on `IsDefinedArray`
     * Multibyte string support (?)
 * Set up Travis
 * Write some examples

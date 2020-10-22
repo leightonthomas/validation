@@ -7,6 +7,12 @@ namespace LeightonThomas\Validation\Rule\Scalar\Numeric;
 use LeightonThomas\Validation\Rule\Rule;
 
 /**
+ * Check if the numeric input is less than (or equal to, if configured) the specified value.
+ * Due to limitations at the moment, the type being compared against must be the same as the input type, e.g.
+ * Rule<int, int>, Rule<float, float>, Rule<numeric-string, numeric-string>.
+ *
+ * @see https://psalm.dev/docs/annotating_code/type_syntax/scalar_types/#numeric
+ *
  * @template T of numeric
  *
  * @extends Rule<T, T>

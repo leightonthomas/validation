@@ -8,6 +8,8 @@ use InvalidArgumentException;
 use LeightonThomas\Validation\Rule\Rule;
 
 /**
+ * Check the length of the input string.
+ *
  * @extends Rule<string, string>
  */
 class Length extends Rule

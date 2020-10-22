@@ -7,6 +7,8 @@ namespace LeightonThomas\Validation\Rule\Arrays;
 use LeightonThomas\Validation\Rule\Rule;
 
 /**
+ * Check that the input is an array with the specified key & value types.
+ *
  * @template K of array-key
  * @template V
  *

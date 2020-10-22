@@ -7,6 +7,9 @@ namespace LeightonThomas\Validation\Rule\Arrays;
 use LeightonThomas\Validation\Rule\Rule;
 
 /**
+ * Check that the input is an array with the specified keys and values.
+ * Keys that are not defined are not never checked.
+ *
  * @psalm-template A of array
  *
  * @extends Rule<mixed, A>

@@ -7,6 +7,8 @@ namespace LeightonThomas\Validation\Rule\Scalar\Strings;
 use LeightonThomas\Validation\Rule\Rule;
 
 /**
+ * Check if the input string does (or does not, if configured) match the given regular expression.
+ *
  * @extends Rule<string, string>
  */
 class Regex extends Rule
