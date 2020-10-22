@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace LeightonThomas\Validation\Rule;
 
+use LeightonThomas\Validation\ValidatorFactory;
+use LeightonThomas\Validation\ValidationResult;
+
 /**
  * Check if the input matches the defined callback.
  *
