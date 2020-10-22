@@ -88,7 +88,6 @@ if ($result->isValid()) {
 
 * Symfony bundle for automatic checker creation
 * Finish off basic rules
-    * Callback
     * Add ability to disallow other keys on `IsDefinedArray`
     * Multibyte string support (?)
 * Set up Travis
