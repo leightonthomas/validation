@@ -1,17 +1,15 @@
-# Validation (TODO change me)
+# Validation
 
 This library provides composable type-safe validation rules that work great with Psalm.
 
 ## Installation
 
-!!!!TODO this should be the correct package name!!!!
 1. Install the package `composer require leightonthomas/validation`
 1. [Enable the Psalm plugin](https://psalm.dev/docs/running_psalm/plugins/using_plugins/) `vendor/bin/psalm-plugin enable leightonthomas/validation`
 
-Without the plugin, you won't receive for full typing for certain things (e.g. object-like arrays using the `IsDefinedArray` rule), and they may default to less-specific types.
+Without the plugin, you won't receive for full typing for certain rules (e.g. dynamically created object-like arrays), and they may default to less-specific types.
 
-## Usage
-### Basic Usage
+## Example
 
 ```php
 <?php

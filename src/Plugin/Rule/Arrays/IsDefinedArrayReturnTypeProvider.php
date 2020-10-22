@@ -86,8 +86,8 @@ class IsDefinedArrayReturnTypeProvider implements MethodReturnTypeProviderInterf
 
             /** @var int|null $realTypeParameterIndex */
             $realTypeParameterIndex = array_flip(
-                    array_keys($secondArgClass->template_types ?? [])
-                )[$oRuleOverrideType->param_name] ?? null;
+                array_keys($secondArgClass->template_types ?? [])
+            )[$oRuleOverrideType->param_name] ?? null;
 
             if ($realTypeParameterIndex === null) {
                 return null;
