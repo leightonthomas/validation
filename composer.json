@@ -2,6 +2,7 @@
     "name": "leightonthomas/validation",
     "type": "psalm-plugin",
     "license": "MIT",
+    "version": "0.1.0",
     "authors": [
         {
             "name": "leightonthomas",
@@ -20,7 +21,13 @@
             "Tests\\LeightonThomas\\Validation\\": "tests/"
         }
     },
-    "description": "Type safe validation library.",
+    "description": "Type safe composable validation library that integrates with static analysis.",
+    "keywords": [
+        "validation",
+        "psalm",
+        "psalm-plugin",
+        "validator"
+    ],
     "require-dev": {
         "vimeo/psalm": "^3.16",
         "phpunit/phpunit": "^9.4",
