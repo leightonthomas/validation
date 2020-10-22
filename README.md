@@ -1,6 +1,6 @@
 # Validation
 
-This library provides composable type-safe validation that work great with Psalm.
+This library provides composable type-safe validation that works great with Psalm.
 
 A stable version has not yet been reached so things are still subject to change.
 
