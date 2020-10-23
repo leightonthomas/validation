@@ -83,8 +83,3 @@ if ($result->isValid()) {
     var_dump($result->getErrors());
 }
 ```
-
-## Roadmap
-
-* Symfony bundle for automatic checker creation
-  * https://symfony.com/doc/current/bundles/best_practices.html#composer-metadata
