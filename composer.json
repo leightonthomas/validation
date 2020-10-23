@@ -39,6 +39,7 @@
         "phpcs-fix": "vendor/bin/phpcbf --standard=PSR12 src/",
         "phpcs": "vendor/bin/phpcs --standard=PSR12 src/",
         "psalm": "vendor/bin/psalm",
+        "phpunit": "vendor/bin/phpunit",
         "codecept": "vendor/bin/codecept run"
     },
     "require": {
