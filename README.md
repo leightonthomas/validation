@@ -6,8 +6,9 @@ A stable version has not yet been reached so things are still subject to change.
 
 ## Installation
 
-1. Install the package `composer require leightonthomas/validation`
-1. [Enable the Psalm plugin](https://psalm.dev/docs/running_psalm/plugins/using_plugins/) `psalm-plugin enable leightonthomas/validation`
+1. Install the validator package itself `composer require leightonthomas/validation`
+1. Install the Psalm plugin `composer require --dev leightonthomas/validation-psalm-plugin`
+1. [Enable the Psalm plugin](https://psalm.dev/docs/running_psalm/plugins/using_plugins/) `psalm-plugin enable leightonthomas/validation-psalm-plugin`
 
 Without the plugin, you won't receive for full typing for certain rules (e.g. dynamically created object-like arrays), and they may default to less-specific types.
 
@@ -18,6 +19,8 @@ Without the plugin, you won't receive for full typing for certain rules (e.g. dy
 1. Create a validator for your rules with the validator factory
 
 ### Example
+
+This example assumes the Psalm plugin is installed and enabled.
 
 ```php
 <?php

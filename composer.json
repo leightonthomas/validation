@@ -1,6 +1,6 @@
 {
     "name": "leightonthomas/validation",
-    "type": "psalm-plugin",
+    "type": "library",
     "license": "MIT",
     "version": "0.1.0",
     "authors": [
@@ -10,13 +10,11 @@
         }
     ],
     "autoload": {
-        "exclude-from-classmap": ["src/Plugin"],
         "psr-4": {
             "LeightonThomas\\Validation\\": "src/"
         }
     },
     "autoload-dev": {
-        "classmap": ["src/Plugin"],
         "psr-4": {
             "Tests\\LeightonThomas\\Validation\\": "tests/"
         }
@@ -25,7 +23,6 @@
     "keywords": [
         "validation",
         "psalm",
-        "psalm-plugin",
         "validator"
     ],
     "require-dev": {
@@ -34,11 +31,6 @@
         "psalm/plugin-phpunit": "^0.12.2",
         "weirdan/codeception-psalm-module": "^0.9.1",
         "squizlabs/php_codesniffer": "^3.5"
-    },
-    "extra": {
-        "psalm": {
-            "pluginClass": "LeightonThomas\\Validation\\Plugin\\Plugin"
-        }
     },
     "suggest": {
         "leightonthomas/validation-psalm-plugin": "Improved Psalm support for certain validation rules."
