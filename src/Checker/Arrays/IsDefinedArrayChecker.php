@@ -52,7 +52,7 @@ class IsDefinedArrayChecker implements Checker
             $difference = array_keys(array_diff_key($value, $rule->getPairs()));
 
             array_map(
-                function($key) use($result, $rule): void {
+                function ($key) use ($result, $rule): void {
                     $result->addToPath((string) $key);
 
                     $result->addError($rule->getMessages()[IsDefinedArray::ERR_UNKNOWN_KEY]);

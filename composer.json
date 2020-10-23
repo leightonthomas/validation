@@ -40,6 +40,9 @@
             "pluginClass": "LeightonThomas\\Validation\\Plugin\\Plugin"
         }
     },
+    "suggest": {
+        "leightonthomas/validation-psalm-plugin": "Improved Psalm support for certain validation rules."
+    },
     "scripts": {
         "phpcs-fix": "vendor/bin/phpcbf --standard=PSR12 src/"
     },
