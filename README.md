@@ -86,8 +86,6 @@ if ($result->isValid()) {
 
 ## Roadmap
 
-* Finish off basic rules
-  * Add ability to disallow other keys on `IsDefinedArray`
 * Symfony bundle for automatic checker creation
   * https://symfony.com/doc/current/bundles/best_practices.html#composer-metadata
 * Investigate PHPStan support

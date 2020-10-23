@@ -10,8 +10,13 @@ use LeightonThomas\Validation\Rule\Rule;
 use LeightonThomas\Validation\ValidationResult;
 use LeightonThomas\Validation\ValidatorFactory;
 
+use function array_diff_key;
 use function array_key_exists;
+use function array_keys;
+use function array_map;
+use function count;
 use function is_array;
+use function var_dump;
 
 /**
  * @implements Checker<IsDefinedArray<array>>
@@ -41,6 +46,21 @@ class IsDefinedArrayChecker implements Checker
             $result->addError($rule->getMessages()[IsDefinedArray::ERR_NOT_ARRAY]);
 
             return;
+        }
+
+        if (! $rule->shouldAllowOtherKeys()) {
+            $difference = array_keys(array_diff_key($value, $rule->getPairs()));
+
+            array_map(
+                function($key) use($result, $rule): void {
+                    $result->addToPath((string) $key);
+
+                    $result->addError($rule->getMessages()[IsDefinedArray::ERR_UNKNOWN_KEY]);
+
+                    $result->removeLastPath();
+                },
+                $difference,
+            );
         }
 
         foreach ($rule->getPairs() as $expectedKey => $arrayPair) {

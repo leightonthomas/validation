@@ -42,11 +42,12 @@ class IsDefinedArrayTest extends TestCase
 
         self::assertCount(1, $pairs);
         self::assertPair('a', $aRule, true, $pairs['a']);
-
+        self::assertTrue($instance->shouldAllowOtherKeys());
         self::assertSame(
             [
                 IsDefinedArray::ERR_KEY_MISSING => 'This key is missing.',
                 IsDefinedArray::ERR_NOT_ARRAY => 'This value must be an array.',
+                IsDefinedArray::ERR_UNKNOWN_KEY => 'This key is invalid.',
             ],
             $instance->getMessages(),
         );
@@ -64,11 +65,12 @@ class IsDefinedArrayTest extends TestCase
 
         self::assertCount(1, $pairs);
         self::assertPair('a', $aRule, false, $pairs['a']);
-
+        self::assertTrue($instance->shouldAllowOtherKeys());
         self::assertSame(
             [
                 IsDefinedArray::ERR_KEY_MISSING => 'This key is missing.',
                 IsDefinedArray::ERR_NOT_ARRAY => 'This value must be an array.',
+                IsDefinedArray::ERR_UNKNOWN_KEY => 'This key is invalid.',
             ],
             $instance->getMessages(),
         );
@@ -159,8 +161,20 @@ class IsDefinedArrayTest extends TestCase
             [
                 IsDefinedArray::ERR_KEY_MISSING => 'This key is missing.',
                 IsDefinedArray::ERR_NOT_ARRAY => 'my new msg',
+                IsDefinedArray::ERR_UNKNOWN_KEY => 'This key is invalid.',
             ],
             $instance->getMessages(),
         );
+    }
+
+    /**
+     * @test
+     */
+    public function allowOtherKeysCanBeDisabled(): void
+    {
+        $instance = IsDefinedArray::of('a', new IsString());
+        $instance->withNoOtherKeys();
+
+        self::assertFalse($instance->shouldAllowOtherKeys());
     }
 }

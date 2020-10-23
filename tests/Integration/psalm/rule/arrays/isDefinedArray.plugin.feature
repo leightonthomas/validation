@@ -129,6 +129,21 @@ Feature: IsDefinedArray Rule with the plugin
       | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array{a?: int}> |
     And I see no other errors
 
+  Scenario: It will retain the correct type when disallowing additional keys
+    Given I have the following code
+      """
+      $rule = IsDefinedArray::of('a', new IsString())
+          ->withNoOtherKeys()
+      ;
+
+      /** @psalm-trace $rule */
+      """
+    When I run Psalm
+    Then I see these errors
+      | Type  | Message                                                                       |
+      | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsDefinedArray<array{a: string}> |
+    And I see no other errors
+
   Scenario: It will return a type of array if invalid data is given
     Given I have the following code
       """

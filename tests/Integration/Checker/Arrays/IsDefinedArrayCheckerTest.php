@@ -311,4 +311,36 @@ class IsDefinedArrayCheckerTest extends CheckerTest
         );
         self::assertFalse($result->isValid());
     }
+
+    /**
+     * @test
+     *
+     * @throws NoCheckersRegistered
+     */
+    public function itWillAddErrorsForAdditionalKeysIfTheyAreNotAllowed(): void
+    {
+        $input = ['a' => [], 'someKey1' => '', 'someKey2' => ''];
+
+        $rule = IsDefinedArray::of(
+            'a',
+            IsDefinedArray::of('b', new IsString()),
+        );
+        $rule->withNoOtherKeys();
+
+        $result = $this->factory->create($rule)->validate($input);
+
+        self::assertEquals(
+            [
+                'a' => [
+                    'b' => [
+                        'This key is missing.',
+                    ],
+                ],
+                'someKey1' => ['This key is invalid.'],
+                'someKey2' => ['This key is invalid.'],
+            ],
+            $result->getErrors(),
+        );
+        self::assertFalse($result->isValid());
+    }
 }
