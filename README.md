@@ -88,4 +88,3 @@ if ($result->isValid()) {
 
 * Symfony bundle for automatic checker creation
   * https://symfony.com/doc/current/bundles/best_practices.html#composer-metadata
-* Investigate PHPStan support
