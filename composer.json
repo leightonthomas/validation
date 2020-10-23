@@ -36,7 +36,10 @@
         "leightonthomas/validation-psalm-plugin": "Improved Psalm support for certain validation rules."
     },
     "scripts": {
-        "phpcs-fix": "vendor/bin/phpcbf --standard=PSR12 src/"
+        "phpcs-fix": "vendor/bin/phpcbf --standard=PSR12 src/",
+        "phpcs": "vendor/bin/phpcs --standard=PSR12 src/",
+        "psalm": "vendor/bin/psalm",
+        "codecept": "vendor/bin/codecept run"
     },
     "require": {
         "php": "^7.4"
