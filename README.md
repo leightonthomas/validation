@@ -14,6 +14,10 @@ A stable version has not yet been reached so things are still subject to change.
 
 Without the plugin, you won't receive for full typing for certain rules (e.g. dynamically created object-like arrays), and they may default to less-specific types.
 
+## Documentation
+
+See the [docs](docs/index.md) folder.
+
 ## Usage
 1. Create a `LeightonThomas\Validation\ValidatorFactory` instance
 1. Register all checkers with the factory
@@ -35,7 +39,8 @@ use LeightonThomas\Validation\Checker\StrictEqualsChecker;
 use LeightonThomas\Validation\Rule\Arrays\IsDefinedArray;
 use LeightonThomas\Validation\Rule\Combination\Compose;
 use LeightonThomas\Validation\Rule\Combination\Union;
-use LeightonThomas\Validation\Rule\Object\IsInstanceOf;use LeightonThomas\Validation\Rule\Scalar\Numeric\IsGreaterThan;
+use LeightonThomas\Validation\Rule\Object\IsInstanceOf;
+use LeightonThomas\Validation\Rule\Scalar\Numeric\IsGreaterThan;
 use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
 use LeightonThomas\Validation\Rule\StrictEquals;
 use LeightonThomas\Validation\ValidatorFactory;
