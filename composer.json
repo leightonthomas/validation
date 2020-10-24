@@ -25,9 +25,8 @@
         "validator"
     ],
     "require-dev": {
-        "vimeo/psalm": "^3.16",
+        "vimeo/psalm": "^4.0",
         "phpunit/phpunit": "^9.4",
-        "psalm/plugin-phpunit": "^0.12.2",
         "weirdan/codeception-psalm-module": "^0.9.1",
         "squizlabs/php_codesniffer": "^3.5"
     },
