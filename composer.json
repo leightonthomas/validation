@@ -31,7 +31,8 @@
         "squizlabs/php_codesniffer": "^3.5"
     },
     "suggest": {
-        "leightonthomas/validation-psalm-plugin": "Improved Psalm support for certain validation rules."
+        "leightonthomas/validation-psalm-plugin": "Improved Psalm support for certain validation rules.",
+        "leightonthomas/validation-bundle": "Symfony bundle for this library."
     },
     "scripts": {
         "phpcs-fix": "vendor/bin/phpcbf --standard=PSR12 src/",
