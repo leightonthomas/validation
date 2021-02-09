@@ -25,7 +25,7 @@ final class ValidationResult
 
     /**
      * @var array
-     * @psalm-var array<string, list<string>>
+     * @psalm-var array<array-key, list<string>>
      */
     private array $errors;
 

@@ -17,6 +17,7 @@ class StrictEqualsChecker implements Checker
     /**
      * {@inheritdoc}
      *
+     * @param mixed $value
      * @psalm-param StrictEquals $rule
      */
     public function check(

@@ -21,6 +21,7 @@ class RegexChecker implements Checker
     /**
      * {@inheritdoc}
      *
+     * @param mixed $value
      * @param Regex $rule
      */
     public function check(

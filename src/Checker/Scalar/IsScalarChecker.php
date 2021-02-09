@@ -25,6 +25,7 @@ class IsScalarChecker implements Checker
     /**
      * {@inheritdoc}
      *
+     * @param mixed $value
      * @param IsScalar $rule
      */
     public function check(

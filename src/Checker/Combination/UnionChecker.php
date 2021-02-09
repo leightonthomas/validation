@@ -26,6 +26,7 @@ class UnionChecker implements Checker
     /**
      * {@inheritdoc}
      *
+     * @param mixed $value
      * @param Union $rule
      * @psalm-param Union<mixed, mixed> $rule
      */

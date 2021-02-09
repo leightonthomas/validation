@@ -21,6 +21,7 @@ class IsGreaterThanChecker implements Checker
     /**
      * {@inheritdoc}
      *
+     * @param mixed $value
      * @param IsGreaterThan $rule
      */
     public function check(

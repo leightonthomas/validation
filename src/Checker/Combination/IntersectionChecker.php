@@ -26,6 +26,7 @@ class IntersectionChecker implements Checker
     /**
      * {@inheritdoc}
      *
+     * @param mixed $value
      * @param Intersection $rule
      * @psalm-param Intersection<mixed, object> $rule
      */

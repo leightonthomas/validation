@@ -26,6 +26,7 @@ class ComposeChecker implements Checker
     /**
      * {@inheritdoc}
      *
+     * @param mixed $value
      * @param Compose $rule
      * @psalm-param Compose<mixed, mixed> $rule
      */

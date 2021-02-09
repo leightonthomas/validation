@@ -25,6 +25,7 @@ class CallbackChecker implements Checker
     /**
      * {@inheritdoc}
      *
+     * @param mixed $value
      * @psalm-param Callback $rule
      */
     public function check(

@@ -22,6 +22,7 @@ class LengthChecker implements Checker
     /**
      * {@inheritdoc}
      *
+     * @param mixed $value
      * @param Length $rule
      */
     public function check(
