@@ -33,6 +33,7 @@ class IsArrayChecker implements Checker
     /**
      * {@inheritdoc}
      *
+     * @param mixed $value
      * @param IsArray $rule
      * @psalm-param IsArray<array-key, mixed> $rule
      */

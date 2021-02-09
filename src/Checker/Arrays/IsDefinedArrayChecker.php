@@ -34,6 +34,7 @@ class IsDefinedArrayChecker implements Checker
     /**
      * {@inheritdoc}
      *
+     * @param mixed $value
      * @param IsDefinedArray $rule
      * @psalm-param IsDefinedArray<array> $rule
      */

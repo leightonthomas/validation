@@ -22,6 +22,7 @@ class IsInstanceOfChecker implements Checker
     /**
      * {@inheritdoc}
      *
+     * @param mixed $value
      * @param IsInstanceOf $rule
      */
     public function check(
