@@ -25,6 +25,7 @@ Feature: IsArray Rule with no plugin
       use LeightonThomas\Validation\Rule\Arrays\IsArray;
       use LeightonThomas\Validation\Rule\Scalar\Strings\IsString;
       use LeightonThomas\Validation\Rule\Scalar\Integer\IsInteger;
+      use LeightonThomas\Validation\Rule\Combination\Union;
       """
 
   Scenario: It will cause Psalm issues if a non-array-key Rule is used for the key rule
@@ -64,8 +65,10 @@ Feature: IsArray Rule with no plugin
       | Trace | $rule: LeightonThomas\Validation\Rule\Arrays\IsArray<expectedTypes> |
 
     Examples:
-      | keyRule        | valueRule      | expectedTypes                        |
-      | new IsString() | null           | <string, mixed>                      |
-      | null           | new IsString() | <array-key, string>                  |
-      | null           | new IsArray()  | <array-key, array<array-key, mixed>> |
-      | new IsInteger  | new IsString() | <int, string>                        |
+      | keyRule        | valueRule                                      | expectedTypes                                       |
+      | new IsString() | null                                           | <string, mixed>                                     |
+      | null           | new IsString()                                 | <array-key, string>                                 |
+      | null           | new IsArray()                                  | <array-key, array<array-key, mixed>>                |
+      | new IsInteger  | new IsString()                                 | <int, string>                                       |
+      | null           | new IsArray(new IsString(), new IsArray())     | <array-key, array<string, array<array-key, mixed>>> |
+      | null           | Union::of(new IsString())->or(new IsInteger()) | <array-key, int\|string>                            |
